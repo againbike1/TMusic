@@ -9,7 +9,8 @@ AVAudioPlayer用来播放沙盒中缓存好的文件 STKAudioPlaying 是用来�
 目前实现的模块有下载 播放 在线播放 
 目前Bug 二级控机制跳转会失败 正在努力解决:
         搜索内容如果匹配不到会闪退. 
-  很快会解决的 
+  很快会解决的 ~~~~~~~~~~~~~~
+  各位 这个项目 有逻辑上的Bug .....  很快会解决的 ~~~~~~~~~~~~~~
 ![image](https://github.com/LeslieJia/TMusic/blob/becb16627c57d609d9ff45e868a527ea1c8cda97/pic/Snip20150908_1.png)
 ![image](https://raw.githubusercontent.com/LeslieJia/TMusic/becb16627c57d609d9ff45e868a527ea1c8cda97/pic/Snip20150908_14.png)
 ![image](https://raw.githubusercontent.com/LeslieJia/TMusic/becb16627c57d609d9ff45e868a527ea1c8cda97/pic/Snip20150908_15.png)
