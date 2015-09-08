@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8152.3" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8124.4"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ASViewController">
@@ -23,24 +24,20 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="QAL-4D-Kv3" userLabel="table">
-                    <rect key="frame" x="47" y="99" width="280" height="161"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="EYR-49-HLh"/>
-                        <outlet property="delegate" destination="-1" id="pg8-1K-gaf"/>
-                    </connections>
-                </tableView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TMusic" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2ig-JM-0Fz">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TMusic" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ig-JM-0Fz">
                     <rect key="frame" x="47" y="43" width="280" height="41"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="41" id="476-Qj-OUB"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="24"/>
                     <color key="textColor" red="0.44705885649999999" green="0.44705885649999999" blue="0.44705885649999999" alpha="1" colorSpace="deviceRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="1gk-49-0On">
-                    <rect key="frame" x="62" y="298" width="250" height="29"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="1gk-49-0On">
+                    <rect key="frame" x="62" y="396" width="250" height="29"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="Pwv-w6-Eaz"/>
+                    </constraints>
                     <segments>
                         <segment title="登录"/>
                         <segment title="注册"/>
@@ -50,8 +47,29 @@
                         <action selector="changeFieldBackground:" destination="-1" eventType="valueChanged" id="u6U-it-xco"/>
                     </connections>
                 </segmentedControl>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="QAL-4D-Kv3" userLabel="table">
+                    <rect key="frame" x="47" y="127" width="280" height="220"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="220" id="vKL-6e-STY"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="EYR-49-HLh"/>
+                        <outlet property="delegate" destination="-1" id="pg8-1K-gaf"/>
+                    </connections>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="0.78409476899999997" green="0.78409476899999997" blue="0.78409476899999997" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="2ig-JM-0Fz" firstAttribute="top" secondItem="3fc-VH-eoW" secondAttribute="top" constant="43" id="50I-vl-ozi"/>
+                <constraint firstItem="2ig-JM-0Fz" firstAttribute="leading" secondItem="3fc-VH-eoW" secondAttribute="leading" constant="47" id="IZd-gL-vMX"/>
+                <constraint firstAttribute="trailing" secondItem="1gk-49-0On" secondAttribute="trailing" constant="63" id="L0G-Ge-ceT"/>
+                <constraint firstAttribute="trailing" secondItem="QAL-4D-Kv3" secondAttribute="trailing" constant="48" id="Z90-KP-3dN"/>
+                <constraint firstAttribute="trailing" secondItem="2ig-JM-0Fz" secondAttribute="trailing" constant="48" id="Zmu-Or-xZb"/>
+                <constraint firstItem="1gk-49-0On" firstAttribute="leading" secondItem="3fc-VH-eoW" secondAttribute="leading" constant="62" id="Zxf-Vz-vWs"/>
+                <constraint firstItem="1gk-49-0On" firstAttribute="top" secondItem="QAL-4D-Kv3" secondAttribute="bottom" constant="49" id="a1H-uX-WtG"/>
+                <constraint firstItem="QAL-4D-Kv3" firstAttribute="top" secondItem="2ig-JM-0Fz" secondAttribute="bottom" constant="43" id="cWT-Xr-KN5"/>
+                <constraint firstItem="QAL-4D-Kv3" firstAttribute="leading" secondItem="3fc-VH-eoW" secondAttribute="leading" constant="47" id="y5R-j6-7Y7"/>
+            </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
         </view>
@@ -62,9 +80,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="277" height="39"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="*密码:" minimumFontSize="17" clearButtonMode="always" id="60O-OE-XyH" customClass="ASTextField">
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="*密码:" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="60O-OE-XyH" customClass="ASTextField">
                         <rect key="frame" x="13" y="0.0" width="250" height="35"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES"/>
                     </textField>
@@ -80,9 +97,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="277" height="39"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="*用户名:" minimumFontSize="17" clearButtonMode="always" id="R0z-fD-0ge" customClass="ASTextField">
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="*用户名:" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="R0z-fD-0ge" customClass="ASTextField">
                         <rect key="frame" x="13" y="0.0" width="250" height="35"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                     </textField>
@@ -98,9 +114,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="277" height="47"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Rn2-N1-WMs">
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rn2-N1-WMs">
                         <rect key="frame" x="13" y="6" width="250" height="35"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <state key="normal" title="LOGIN" backgroundImage="login_button.png">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -121,9 +136,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="277" height="39"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" 邮箱:         " minimumFontSize="17" clearButtonMode="always" id="See-8O-cfd" customClass="ASTextField">
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" 邮箱:         " minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="See-8O-cfd" customClass="ASTextField">
                         <rect key="frame" x="13" y="0.0" width="250" height="35"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="go"/>
@@ -138,9 +152,4 @@
     <resources>
         <image name="login_button.png" width="250" height="36"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>

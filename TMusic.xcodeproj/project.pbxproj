@@ -1333,6 +1333,7 @@
 				TargetAttributes = {
 					CE9A61AA1B96C54C0071A733 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = U6S7593544;
 					};
 					CE9A61C31B96C54D0071A733 = {
 						CreatedOnToolsVersion = 6.4;
@@ -1630,12 +1631,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"/Users/leslie/Downloads/realm-cocoa-0.91.5/ios",
-					"/Users/leslie/Downloads/realm-objc-0.95.0",
-					2/ios/static,
 					"/Users/leslie/Downloads/ShareSDK简洁版/libraries/extends/GooglePlusSDK",
 					"/Users/leslie/Downloads/ShareSDK简洁版/libraries/extends/QQSDK",
 					"/Users/leslie/Downloads/ShareSDK简洁版/libraries/extends/RenRenSDK",
@@ -1657,7 +1658,9 @@
 					"$(PROJECT_DIR)/libraries/extends/WeChatSDK",
 				);
 				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = www.jiakeqi.cn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "TMusic/Playing (播放)/Controllers/TMusic-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1669,12 +1672,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"/Users/leslie/Downloads/realm-cocoa-0.91.5/ios",
-					"/Users/leslie/Downloads/realm-objc-0.95.0",
-					2/ios/static,
 					"/Users/leslie/Downloads/ShareSDK简洁版/libraries/extends/GooglePlusSDK",
 					"/Users/leslie/Downloads/ShareSDK简洁版/libraries/extends/QQSDK",
 					"/Users/leslie/Downloads/ShareSDK简洁版/libraries/extends/RenRenSDK",
@@ -1696,7 +1699,9 @@
 					"$(PROJECT_DIR)/libraries/extends/WeChatSDK",
 				);
 				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = www.jiakeqi.cn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "TMusic/Playing (播放)/Controllers/TMusic-Bridging-Header.h";
 			};
 			name = Release;
