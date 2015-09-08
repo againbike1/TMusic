@@ -1,0 +1,41 @@
+//
+//  PrefixHeader.pch
+//  TMusic
+//
+//  Created by Leslie on 15/8/29.
+//  Copyright © 2015年 Leslie. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import "AFNetworking.h"
+#import "MJExtension.h"
+#import "UIView+Extension.h"
+#import "UIImageView+WebCache.h"
+#import "TPlayButton.h"
+#import "STKAudioPlayer.h"
+#import "UIBarButtonItem+Extension.h"
+#define SYS_FONT(x) [UIFont systemFontOfSize:x]
+//抽取颜色
+#define RGB(r,g,b) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1]
+
+//随机颜色
+#define RandomColor [UIColor colorWithRed:arc4random_uniform(256)/255.0 green:arc4random_uniform(256)/255.0 blue:arc4random_uniform(256)/255.0 alpha:1]
+
+#define SCREEN_W [UIScreen mainScreen].bounds.size.width
+#define SCREEN_H [UIScreen mainScreen].bounds.size.height
+
+#define MARGIN 10
+#define TNigationBar_H 64
+#define TNotificationCenter  [NSNotificationCenter defaultCenter]
+#define DOCU_PATH [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)firstObject]
+#define TNPlayButtonClick @"PlayButtonClick"
+#define TNStopButtonClick @"StopButtonClick"
+#define TNSearchSongsWillPlaying @"SearchSongsWillPlaying"
+
+#define TNSearchContent @"SearchContent"
+
+#define TNReceivePushSearchResultVc @"ReceivePushSearchResultVc"
+
+#endif /* PrefixHeader_pch */

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<array>
+		<dict>
+			<key>title</key>
+			<string>更换头像</string>
+			<key>icon</key>
+			<string>cm2_set_icn_level</string>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>我的消息</string>
+			<key>icon</key>
+			<string>cm2_set_icn_mail</string>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>付费音乐包</string>
+			<key>icon</key>
+			<string>cm2_set_icn_member</string>
+		</dict>
+	</array>
+	<array>
+		<dict>
+			<key>title</key>
+			<string>积分商城</string>
+			<key>icon</key>
+			<string>cm2_set_icn_store</string>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>定时关闭</string>
+			<key>icon</key>
+			<string>cm2_set_icn_time</string>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>设置</string>
+			<key>icon</key>
+			<string>cm2_set_icn_set</string>
+		</dict>
+	</array>
+	<array>
+		<dict>
+			<key>title</key>
+			<string>分享TMusic</string>
+			<key>icon</key>
+			<string>cm2_set_icn_share</string>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>注册</string>
+			<key>icon</key>
+			<string>cm2_set_icn_about</string>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>退出</string>
+			<key>icon</key>
+			<string>cm2_rdi_btn_dlt_prs</string>
+		</dict>
+	</array>
+</array>
+</plist>
