@@ -5,9 +5,9 @@
  V1.0版本
  这个播放器的播放模块用到了两个类  
 一个是AVAudioPlayer 一个是STKaudioPlaying STKAudioPlaying 是一个第三方类库 对AVPlayer的封装 
-AVAudioPlayer用来播放沙盒中缓存好的文件 STKAudioPlaying 是用来播放网络音乐 
-注:有的模块功能没有实现 比如首页歌手类别搜索 因为我找不到好用的API啊摔!!!!!
-目前实现的模块有下载 播放 在线播放 
+ AVAudioPlayer用来播放沙盒中缓存好的文件 STKAudioPlaying 是用来播放网络音乐 
+ 注:有的模块功能没有实现 比如首页歌手类别搜索 因为我找不到好用的API啊摔!!!!!
+ 目前实现的模块有下载 播放 在线播放 暂时只支持歌曲收藏
 目前Bug 二级控机制跳转会失败 正在努力解决:
         搜索内容如果匹配不到会闪退. 
   很快会解决的 ~~~~~~~~~~~~~~
