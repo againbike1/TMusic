@@ -117,8 +117,8 @@
         label.text = [NSString stringWithFormat:@"%zd",indexPath.row+1];
         label.textColor =[UIColor grayColor];
         label.font = SYS_FONT(17);
-        label.frame = CGRectMake(25, 0, 25, 50);
-        
+        label.frame = CGRectMake(0, 0, 50, 50);
+        label.textAlignment = NSTextAlignmentCenter;
         [cell.contentView addSubview:label];
     }
     

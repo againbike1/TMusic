@@ -7,6 +7,8 @@
 //
 
 #import "TArtistViewController.h"
+#import "TSearchResultViewController.h"
+#import "TNavMianViewController.h"
 
 @interface TArtistViewController ()
 
@@ -20,6 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [ self setUpNavgationBar];
+        self.tableView.separatorInset = UIEdgeInsetsMake(0, 50, 0, 0);
 }
 
 
@@ -52,14 +55,32 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellID = @"artistCell";
+     NSString *cellID = [NSString stringWithFormat:@"%lu",indexPath.row];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     if (cell == nil) {
         cell =[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellID];
+        UILabel *label = [[UILabel alloc]init];
+        label.text = [NSString stringWithFormat:@"%zd",indexPath.row+1];
+        label.textColor =[UIColor grayColor];
+        label.font = SYS_FONT(17);
+        label.frame = CGRectMake(0, 0, 50, 50);
+        label.textAlignment = NSTextAlignmentCenter;
+        [cell.contentView addSubview:label];
     }
     
     cell.textLabel.text = self.artistArray[indexPath.row];
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *name = self.artistArray[indexPath.row];
+    
+    TSearchResultViewController *search = [[TSearchResultViewController alloc]init];
+    TNavMianViewController *nav = [[TNavMianViewController alloc]initWithRootViewController:search];
+    search.result = name;
+    search.type = @"1";
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 #pragma mark 自定义代理

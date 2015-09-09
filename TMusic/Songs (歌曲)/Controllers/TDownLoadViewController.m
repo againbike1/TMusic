@@ -33,6 +33,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpNavgationBar];
+        self.tableView.separatorInset = UIEdgeInsetsMake(0, 50, 0, 0);
+    self.tableView.tableFooterView = [[UIView alloc]init];
 }
 
 
@@ -64,7 +66,7 @@
 }
 - (void)go
 {
-    TPlayingController *play = [[TPlayingController alloc]init];
+    TPlayingController *play = [TPlayingController sharePlayingVc];
     TNavMianViewController *nav = [[TNavMianViewController alloc]initWithRootViewController:play];
     [self presentViewController:nav animated:YES completion:nil];
 }
@@ -85,8 +87,16 @@
         UIButton *button = [[UIButton alloc]init];
         [button  setImage:[UIImage imageNamed:@"btn_download_complete2_play"] forState:UIControlStateNormal];
         button.frame = CGRectMake(SCREEN_W-55, 0, 50, 50);
-    
         [cell.contentView addSubview:button];
+        
+        UILabel *label = [[UILabel alloc]init];
+        label.text = [NSString stringWithFormat:@"%zd",indexPath.row+1];
+        label.textColor =[UIColor grayColor];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.font = SYS_FONT(17);
+        label.frame = CGRectMake(0, 0, 50, 50);
+        label.textAlignment = NSTextAlignmentCenter;
+        [cell.contentView addSubview:label];
     }
     TDownLoad *downModel = self.songsArray[indexPath.row];
     cell.textLabel.text = downModel.songsName;
@@ -118,6 +128,7 @@
     [self presentViewController:nav animated:YES completion:nil];
     
 }
+
 #pragma mark 自定义代理
 
 #pragma mark 自定义通知

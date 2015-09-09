@@ -270,44 +270,43 @@
         params[@"offset"]                  = temp;
         [mgr GET:str parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
             
-            NSDictionary *rsultDict           = responseObject[@"result"];
-            if (rsultDict[@"songCount"]) {
-                NSArray *tempSongsArray            = [NSArray arrayWithObject:rsultDict[@"songs"]];
-                NSArray *songArray =[tempSongsArray firstObject];
-                NSMutableArray *tempArray          = [NSMutableArray array];
-                for (int i                         = 0; i<songArray.count; i++) {
-                    
-                    NSDictionary *songsDict            = songArray[i];
-                    TSearchSongsModel *songsModel =[TSearchSongsModel searchSongsWithDict:songsDict];
-                    if (songsModel.artists) {
-                        NSArray *tempArtistsArray          = [NSArray arrayWithObject:songsModel.artists];
-                        NSArray *artistsArray              = [tempArtistsArray firstObject];
-                        for (int j                         = 0; j<artistsArray.count; j++) {
-                            NSDictionary *dict                 = artistsArray[j];
-                            songsModel.artists                 = [TSearchArtistsModel searchArtistsWithDict:dict];
-                        }
+        NSDictionary *rsultDict   = responseObject[@"result"];
+         
+        if (rsultDict[@"songCount"]) {
+            NSArray *tempSongsArray  = [NSArray arrayWithObject:rsultDict[@"songs"]];
+            NSArray *songArray =[tempSongsArray firstObject];
+            NSMutableArray *tempArray  = [NSMutableArray array];
+            for (int i = 0; i<songArray.count; i++) {
+    
+                NSDictionary *songsDict  = songArray[i];
+                TSearchSongsModel *songsModel =[TSearchSongsModel searchSongsWithDict:songsDict];
+                if (songsModel.artists) {
+                    NSArray *tempArtistsArray  = [NSArray arrayWithObject:songsModel.artists];
+                    NSArray *artistsArray   = [tempArtistsArray firstObject];
+                    for (int j = 0; j<artistsArray.count; j++) {
+                        NSDictionary *dict = artistsArray[j];
+                        songsModel.artists = [TSearchArtistsModel searchArtistsWithDict:dict];
                     }
-                    
-                    if (songsModel.album) {
-                        
-                        NSDictionary *albumDict            = (NSDictionary *)songsModel.album;
-                        songsModel.album                   = [TSearchAlbumModel searchAlbumWithDict:albumDict];
-                        if (songsModel.album.artist) {
-                            NSDictionary *arlistModel          = (NSDictionary *)songsModel.album.artist;
-                            songsModel.album.artist            = [TSearchArtistsModel searchArtistsWithDict:arlistModel];
-                            [tempArray addObject:songsModel];
-                        }
-                    }
-                    
                 }
-                [self.songsArray addObjectsFromArray:tempArray];
-                [self.tableView reloadData];
-            }
- 
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@" 刷新更多出错 %@",error);
-        }];
         
+                if (songsModel.album) {
+                    NSDictionary *albumDict = (NSDictionary *)songsModel.album;
+                    songsModel.album  = [TSearchAlbumModel searchAlbumWithDict:albumDict];
+                    if (songsModel.album.artist) {
+                        NSDictionary *arlistModel = (NSDictionary *)songsModel.album.artist;
+                        songsModel.album.artist = [TSearchArtistsModel searchArtistsWithDict:arlistModel];
+                        [tempArray addObject:songsModel];
+                    }
+                }
+            }
+            [self.songsArray addObjectsFromArray:tempArray];
+            [self.tableView reloadData];
+        }
+
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@" 刷新更多出错 %@",error);
+    }];
+    
     }
     
 }
@@ -339,6 +338,10 @@
         [mgr GET:str parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
 
         NSDictionary *ResultDict           = responseObject[@"result"];
+            if (!ResultDict) {
+                [self.view.window showHUDWithText:@"无对应选项" Type:ShowDismiss Enabled:YES];
+                return ;
+            }
         NSArray *tempSongsArray            = [NSArray arrayWithObject:ResultDict[@"songs"]];
             NSArray *songArray =[tempSongsArray firstObject];
         NSMutableArray *tempArray          = [NSMutableArray array];
