@@ -65,7 +65,6 @@
 }
 -(void)viewWillAppear:(BOOL)animated
 {
-    
     [super viewWillAppear:animated];
     dispatch_queue_t queue = dispatch_queue_create(NULL, NULL);
     dispatch_sync(queue, ^{

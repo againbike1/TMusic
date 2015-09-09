@@ -71,11 +71,11 @@
     NSArray *temp1 = [NSArray arrayWithObject:down];
     NSArray *temp2 = [temp1 firstObject];
     self.downloadCOunt = [NSString stringWithFormat:@"%zd",temp2.count];
-    [self.tableView reloadData];
     RLMResults *co = [Collect allObjects];
     NSArray *temp3 = [NSArray arrayWithObject:co];
     NSArray *temp4 = [temp3 firstObject];
     self.collectCount = [NSString stringWithFormat:@"%zd",temp4.count];
+    [self.tableView reloadData];
 }
 
 
@@ -145,6 +145,15 @@
             label.frame = CGRectMake(SCREEN_W-40, 0, 40, 50);
             [cell.contentView addSubview:label];
         }
+        if (indexPath.section == 1 && indexPath.row ==0) {
+            UILabel *label = [[UILabel alloc]init];
+            
+            label.text = self.collectCount;
+            label.textColor = [UIColor grayColor];
+            label.font = SYS_FONT(13);
+            label.frame = CGRectMake(SCREEN_W-40, 0, 40, 50);
+            [cell.contentView addSubview:label];
+        }
     }
 
     if (indexPath.section == 0) {
@@ -156,13 +165,6 @@
     else if (indexPath.section==1 && indexPath.row==0) {
         cell.textLabel.text = @"我喜欢的音乐";
         cell.imageView.image = [UIImage imageNamed:@"blank_playlist"];
-        UILabel *label = [[UILabel alloc]init];
-      
-        label.text = self.collectCount;
-        label.textColor = [UIColor grayColor];
-        label.font = SYS_FONT(13);
-        label.frame = CGRectMake(SCREEN_W-40, 0, 40, 50);
-        [cell.contentView addSubview:label];
     }
     else
     {

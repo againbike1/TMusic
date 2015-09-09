@@ -33,7 +33,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpNavgationBar];
-    
 }
 
 
@@ -108,12 +107,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TPlayingController *playing = [TPlayingController sharePlayingVc];
-
+    TDownLoad *down = self.songsArray[indexPath.row];
     TNavMianViewController *nav = [[TNavMianViewController alloc]initWithRootViewController:playing];
     playing.isDownLoadMusic = YES;
     NSLog(@"%zd",playing.downLoadModel.songsID);
-    TDownLoad *down = self.songsArray[indexPath.row];
-  
+    if (playing.downLoadModel.songsID == down.songsID) {
+        playing.isDownLoadMusic = NO;
+    }
     playing.downLoadModel = down;
     [self presentViewController:nav animated:YES completion:nil];
     

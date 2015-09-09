@@ -57,6 +57,7 @@
     if (cell == nil) {
         cell =[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellID];
     }
+    
     cell.textLabel.text = self.artistArray[indexPath.row];
     return cell;
 }

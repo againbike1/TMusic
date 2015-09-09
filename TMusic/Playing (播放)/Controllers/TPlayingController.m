@@ -100,26 +100,20 @@ static   TPlayingController *vc = nil;
     [TNotificationCenter postNotificationName:@"hiddenPlayingBox" object:nil];
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
     [self becomeFirstResponder];
-    if (![self.downloadPlayer isPlaying]) {
-      
-        if (self.isSearchMusic) {
-            [self SongsWillPlaying];
-            NSLog(@"接收到了在线试听");
-            self.isSearchMusic = NO;
-            if (self.downloadPlayer) {
-                [self.downloadPlayer stop];
-            }
-        }
-        if (self.isDownLoadMusic) {
-            [self downLoadSongsWillPlaying];
-            NSLog(@"收到了本地播放");
-         
-            self.isDownLoadMusic = NO;
-            [self.player stop];
+    if (self.isSearchMusic) {
+        [self SongsWillPlaying];
+        NSLog(@"接收到了在线试听");
+        self.isSearchMusic = NO;
+        if (self.downloadPlayer) {
+            [self.downloadPlayer stop];
         }
     }
-    
-  
+    if (self.isDownLoadMusic) {
+        [self downLoadSongsWillPlaying];
+        NSLog(@"收到了本地播放");
+        [self.player stop];
+        self.isDownLoadMusic = NO;
+    }
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -426,13 +420,17 @@ static   TPlayingController *vc = nil;
             [realm addObject:collect];
             [realm commitWriteTransaction];
             NSLog(@"歌曲收藏写入成功");
-            [self.visualView1.window showHUDWithText:@"收藏成功" Type:ShowPhotoYes Enabled:YES];
-        
         });
+        [self.visualView1.window showHUDWithText:@"收藏成功" Type:ShowPhotoYes Enabled:YES];
+        [UIView animateWithDuration:0.25 animations:^{
+            [self.visualView1  removeFromSuperview];
+              [self.visualView2  removeFromSuperview];
+            self.isToolsBtnClick = YES;
+        }];
     }
 }
-#pragma mark 请求歌词 
-#warning 暂未找到好用的歌词API  找到后替换url  调用下载就可
+#pragma mark 请求歌词
+#warning 暂未找到好用的歌词API 因歌词涉及版权 未加入该模块
 - (void)lyricsBtnClick
 {
     if (self.isLrcBtnClick) {

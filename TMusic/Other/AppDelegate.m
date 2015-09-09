@@ -55,7 +55,6 @@
 
 - (void)setUpPlayingBox
 {
-
     self.playingBox  = [[UIButton alloc]init];
     [self.playingBox setImage:[UIImage imageNamed:@"btn_bluecd"] forState:UIControlStateNormal];
     self.playingBox.frame = CGRectMake(SCREEN_W-63, 28, 48, 30);
