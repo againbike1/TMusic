@@ -29,7 +29,9 @@
 }
 #pragma mark
 #pragma mark - 用户交互
-
+/**
+ *  监听键盘的return 给控制器发通知
+ */
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     

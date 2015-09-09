@@ -130,7 +130,9 @@
     TNavMianViewController *nav = [[TNavMianViewController alloc]initWithRootViewController:vc];
     vc.songsModel = songsModel;
     vc.isSearchMusic = YES;
-  
+    if (vc.player.state == STKAudioPlayerStatePlaying) {
+        [vc.player stop];
+    }
     [self presentViewController:nav animated:YES completion:nil];
    
 }

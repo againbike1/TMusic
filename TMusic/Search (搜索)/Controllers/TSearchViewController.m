@@ -10,36 +10,67 @@
 #import "TSearchHeader.h"
 #import "TNavMianViewController.h"
 #import "TSearchResultViewController.h"
-#import "SKSplashIcon.h"
-@interface TSearchViewController () <SKSplashDelegate>
-@property (nonatomic, strong) NSMutableArray *singerStyles;
-
-@property (strong, nonatomic) SKSplashView *splashView;
-
-//Demo of how to add other UI elements on top of splash view
+#import "TSearchViewController.h"
+#import "TSearchHeader.h"
+#import "TNavMianViewController.h"
+#import "TSearchResultViewController.h"
+#import "TArtistViewController.h"
+@interface TSearchViewController ()
+@property (nonatomic, strong) NSMutableArray *artistStyles;
+@property (nonatomic, strong) NSMutableArray *chinaMan;
+@property (nonatomic, strong) NSMutableArray *chinaWoman;
+@property (nonatomic, strong) NSMutableArray *chinaGroup;
 @property (strong, nonatomic) UIActivityIndicatorView *indicatorView;
 @end
 
 @implementation TSearchViewController
 
+-(NSMutableArray *)chinaMan
+{
+    NSString *path = [[NSBundle mainBundle]pathForResource:@"ChinaMan.plist" ofType:nil];
+    if (!_chinaMan) {
+        _chinaMan = [NSMutableArray arrayWithContentsOfFile:path];
+    }
+    return _chinaMan;
+}
 
+-(NSMutableArray *)chinaWoman
+{
+    NSString *path = [[NSBundle mainBundle]pathForResource:@"ChinaWoman.plist" ofType:nil];
+    if (!_chinaWoman) {
+        _chinaWoman = [NSMutableArray arrayWithContentsOfFile:path];
+    }
+    return _chinaWoman;
+}
+
+-(NSMutableArray *)chinaGroup
+{
+    NSString *path = [[NSBundle mainBundle]pathForResource:@"ChinaGroup.plist" ofType:nil];
+    if (!_chinaGroup) {
+        _chinaGroup = [NSMutableArray arrayWithContentsOfFile:path];
+    }
+    return _chinaGroup;
+}
+
+-(NSMutableArray *)artistStyles
+{
+    NSString *path =[[NSBundle mainBundle]pathForResource:@"singerStyle.plist" ofType:nil];
+    if (!_artistStyles) {
+       _artistStyles = [NSMutableArray arrayWithContentsOfFile:path];
+    }
+    return _artistStyles;
+}
 #pragma mark
 #pragma mark - 1.View生命周期
 
 - (void)viewDidLoad {
    [super viewDidLoad];
 //    self.tableView.separatorInset = UIEdgeInsetsMake(0, 15, 0, 15);
-    
-     [self  snapchatSplash];
-    
-    
+        
     self.tableView.tableFooterView = [[UIView alloc]init];
     
     self.tableView.tableHeaderView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"search_cm_bg"]];
     [TNotificationCenter addObserver:self selector:@selector(receivePushSearchResultvc:) name:TNSearchContent object:nil];
-    
-    NSString *path =[[NSBundle mainBundle]pathForResource:@"singerStyle.plist" ofType:nil];
-    self.singerStyles = [NSMutableArray arrayWithContentsOfFile:path];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -57,7 +88,6 @@
           return 100;
     }
         return 15;
-  
 }
 
 
@@ -69,7 +99,6 @@
         return header;
     }
     return nil;
-    
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -99,7 +128,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellID];
     }
-    NSArray *tempArray = self.singerStyles[indexPath.section];
+    NSArray *tempArray = self.artistStyles[indexPath.section];
     cell.textLabel.text = tempArray[indexPath.row];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
@@ -108,15 +137,33 @@
 #pragma mark - 暂时未找到好用的歌手类别查询接口
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    TArtistViewController *artistVc = [[TArtistViewController alloc]init];
+    TNavMianViewController *nav = [[TNavMianViewController alloc]initWithRootViewController:artistVc];
+    NSArray *tempArray = [NSArray array];
+    nav.title = @"暂不支持此类型搜索";
     
-
+    if (indexPath.section == 0 ) {
+        tempArray = self.artistStyles[0];
+        if (indexPath.row == 0) {
+            nav.title =tempArray[0];
+            artistVc.artistArray = self.chinaMan;
+        }
+        else if (indexPath.row == 1) {
+              nav.title =tempArray[1];
+            artistVc.artistArray = self.chinaWoman;
+        }
+        else {
+              nav.title =tempArray[2];
+            artistVc.artistArray = self.chinaGroup;
+        }
+    }
+    
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 
 #pragma mark
 #pragma mark - 4.数据处理/Http
-
-
 
 
 - (void)receivePushSearchResultvc :(NSNotification *)noti
@@ -134,61 +181,6 @@
     [self presentViewController:nav animated:YES completion:nil];
 }
 
-#pragma mark 开场
-#pragma mark - Animation Examples
-
-- (void) fadeExampleSplash
-{
-    SKSplashIcon *splashIcon = [[SKSplashIcon alloc] initWithImage:[UIImage imageNamed:@"white dot.png"] animationType:SKIconAnimationTypeBlink];
-    _splashView = [[SKSplashView alloc] initWithSplashIcon:splashIcon backgroundColor:[UIColor blackColor] animationType:SKSplashAnimationTypeFade];
-    _splashView.animationDuration = 5;
-    [self.view addSubview:_splashView];
-    [_splashView startAnimation];
-}
-
-#pragma mark - Twitter Example
-
-- (void) twitterSplash
-{
-    //Setting the background
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.view.frame];
-    imageView.image = [UIImage imageNamed:@"twitter background.png"];
-    [self.view addSubview:imageView];
-    //Twitter style splash
-    SKSplashIcon *twitterSplashIcon = [[SKSplashIcon alloc] initWithImage:[UIImage imageNamed:@"twitterIcon.png"] animationType:SKIconAnimationTypeBounce];
-    UIColor *twitterColor = [UIColor colorWithRed:0.25098 green:0.6 blue:1.0 alpha:1.0];
-    _splashView = [[SKSplashView alloc] initWithSplashIcon:twitterSplashIcon backgroundColor:twitterColor animationType:SKSplashAnimationTypeNone];
-    _splashView.delegate = self; //Optional -> if you want to receive updates on animation beginning/end
-    _splashView.animationDuration = 2; //Optional -> set animation duration. Default: 1s
-    [self.view addSubview:_splashView];
-    [_splashView startAnimation];
-}
-
-- (void) snapchatSplash
-{
-    //Snapchat style splash
-    SKSplashIcon *snapchatSplashIcon = [[SKSplashIcon alloc] initWithImage:[UIImage imageNamed:@"snapchat icon.png"] animationType:SKIconAnimationTypeNone];
-    UIColor *snapchatColor = [UIColor colorWithRed:255 green:252 blue:0 alpha:1];
-    _splashView = [[SKSplashView alloc] initWithSplashIcon:snapchatSplashIcon backgroundColor:snapchatColor animationType:SKSplashAnimationTypeFade];
-   
-}
-#pragma mark - Delegate methods
-
-- (void) splashView:(SKSplashView *)splashView didBeginAnimatingWithDuration:(float)duration
-{
-    NSLog(@"Started animating from delegate");
-    //To start activity animation when splash animation starts
-    [_indicatorView startAnimating];
-}
-
-- (void) splashViewDidEndAnimating:(SKSplashView *)splashView
-{
-    NSLog(@"Stopped animating from delegate");
-    //To stop activity animation when splash animation ends
-    [_indicatorView stopAnimating];
-    
-    
-}
 
 
 

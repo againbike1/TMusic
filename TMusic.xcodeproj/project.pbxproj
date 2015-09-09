@@ -13,6 +13,10 @@
 		CE04D1A01B973FBA00EAB9E2 /* TNavMianViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE04D19F1B973FBA00EAB9E2 /* TNavMianViewController.m */; };
 		CE04D1A31B97EC4100EAB9E2 /* TSearchHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = CE04D1A21B97EC4100EAB9E2 /* TSearchHeader.m */; };
 		CE04D1A51B97ECE800EAB9E2 /* SearchHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE04D1A41B97ECE800EAB9E2 /* SearchHeader.xib */; };
+		CE3A7A011B9FB12600245275 /* ChinaGroup.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE3A79FE1B9FB12600245275 /* ChinaGroup.plist */; };
+		CE3A7A021B9FB12600245275 /* ChinaMan.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE3A79FF1B9FB12600245275 /* ChinaMan.plist */; };
+		CE3A7A031B9FB12600245275 /* ChinaWoman.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE3A7A001B9FB12600245275 /* ChinaWoman.plist */; };
+		CE3A7A061B9FB3B000245275 /* TArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3A7A051B9FB3B000245275 /* TArtistViewController.m */; };
 		CE6116E71B98861D00A0EA55 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE6116E61B98861D00A0EA55 /* CoreLocation.framework */; };
 		CE6116E91B98862700A0EA55 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE6116E81B98862700A0EA55 /* Security.framework */; };
 		CE6116EB1B98862D00A0EA55 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE6116EA1B98862D00A0EA55 /* CoreGraphics.framework */; };
@@ -159,7 +163,6 @@
 		CE9A63491B96D2840071A733 /* TMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9A63481B96D2840071A733 /* TMainViewController.m */; };
 		CE9A63521B96DCF30071A733 /* UIBarButtonItem+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9A63511B96DCF30071A733 /* UIBarButtonItem+Extension.m */; };
 		CEA2FCD61B986B0600D0FF24 /* singerStyle.plist in Resources */ = {isa = PBXBuildFile; fileRef = CEA2FCD51B986B0600D0FF24 /* singerStyle.plist */; };
-		CEA2FCD91B986CC300D0FF24 /* TYunMusicView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA2FCD81B986CC300D0FF24 /* TYunMusicView.m */; };
 		CECB843F1B9E6EE0006F0848 /* TAccountTool.m in Sources */ = {isa = PBXBuildFile; fileRef = CECB843E1B9E6EE0006F0848 /* TAccountTool.m */; };
 		CECB84461B9E846A006F0848 /* AccountSetting.plist in Resources */ = {isa = PBXBuildFile; fileRef = CECB84451B9E846A006F0848 /* AccountSetting.plist */; };
 		CEDB12071B99484200192956 /* SongsSetting.plist in Resources */ = {isa = PBXBuildFile; fileRef = CEDB12061B99484200192956 /* SongsSetting.plist */; };
@@ -189,6 +192,11 @@
 		CE04D1A11B97EC4100EAB9E2 /* TSearchHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSearchHeader.h; sourceTree = "<group>"; };
 		CE04D1A21B97EC4100EAB9E2 /* TSearchHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSearchHeader.m; sourceTree = "<group>"; };
 		CE04D1A41B97ECE800EAB9E2 /* SearchHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchHeader.xib; sourceTree = "<group>"; };
+		CE3A79FE1B9FB12600245275 /* ChinaGroup.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ChinaGroup.plist; sourceTree = "<group>"; };
+		CE3A79FF1B9FB12600245275 /* ChinaMan.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ChinaMan.plist; sourceTree = "<group>"; };
+		CE3A7A001B9FB12600245275 /* ChinaWoman.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ChinaWoman.plist; sourceTree = "<group>"; };
+		CE3A7A041B9FB3B000245275 /* TArtistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TArtistViewController.h; sourceTree = "<group>"; };
+		CE3A7A051B9FB3B000245275 /* TArtistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TArtistViewController.m; sourceTree = "<group>"; };
 		CE6116E61B98861D00A0EA55 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		CE6116E81B98862700A0EA55 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		CE6116EA1B98862D00A0EA55 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -455,8 +463,6 @@
 		CE9A63501B96DCF30071A733 /* UIBarButtonItem+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Extension.h"; sourceTree = "<group>"; };
 		CE9A63511B96DCF30071A733 /* UIBarButtonItem+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Extension.m"; sourceTree = "<group>"; };
 		CEA2FCD51B986B0600D0FF24 /* singerStyle.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = singerStyle.plist; sourceTree = "<group>"; };
-		CEA2FCD71B986CC300D0FF24 /* TYunMusicView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYunMusicView.h; sourceTree = "<group>"; };
-		CEA2FCD81B986CC300D0FF24 /* TYunMusicView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYunMusicView.m; sourceTree = "<group>"; };
 		CECB843D1B9E6EE0006F0848 /* TAccountTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAccountTool.h; sourceTree = "<group>"; };
 		CECB843E1B9E6EE0006F0848 /* TAccountTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAccountTool.m; sourceTree = "<group>"; };
 		CECB84451B9E846A006F0848 /* AccountSetting.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AccountSetting.plist; sourceTree = "<group>"; };
@@ -574,6 +580,16 @@
 				CEDB120B1B994F7200192956 /* TSongsListHeader.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		CE3A79FD1B9FB12600245275 /* ArtistPlist */ = {
+			isa = PBXGroup;
+			children = (
+				CE3A79FE1B9FB12600245275 /* ChinaGroup.plist */,
+				CE3A79FF1B9FB12600245275 /* ChinaMan.plist */,
+				CE3A7A001B9FB12600245275 /* ChinaWoman.plist */,
+			);
+			path = ArtistPlist;
 			sourceTree = "<group>";
 		};
 		CE6116FC1B9886A100A0EA55 /* Frameorks */ = {
@@ -771,6 +787,7 @@
 				CEA2FCD51B986B0600D0FF24 /* singerStyle.plist */,
 				CEDB12061B99484200192956 /* SongsSetting.plist */,
 				CECB84451B9E846A006F0848 /* AccountSetting.plist */,
+				CE3A79FD1B9FB12600245275 /* ArtistPlist */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -1206,6 +1223,8 @@
 				CE9A62C11B96C59A0071A733 /* TSearchViewController.m */,
 				CE724E061B9825E500C72942 /* TSearchResultViewController.h */,
 				CE724E071B9825E500C72942 /* TSearchResultViewController.m */,
+				CE3A7A041B9FB3B000245275 /* TArtistViewController.h */,
+				CE3A7A051B9FB3B000245275 /* TArtistViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1231,8 +1250,6 @@
 				CE04D1A11B97EC4100EAB9E2 /* TSearchHeader.h */,
 				CE04D1A21B97EC4100EAB9E2 /* TSearchHeader.m */,
 				CE04D1A41B97ECE800EAB9E2 /* SearchHeader.xib */,
-				CEA2FCD71B986CC300D0FF24 /* TYunMusicView.h */,
-				CEA2FCD81B986CC300D0FF24 /* TYunMusicView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1376,6 +1393,8 @@
 				CE9A62FC1B96C59A0071A733 /* LICENSE in Resources */,
 				CE9212E61B9E32EA00B578CD /* user_name_icon@2x.png in Resources */,
 				CE9A63271B96C59A0071A733 /* lk_noimage@2x.png in Resources */,
+				CE3A7A031B9FB12600245275 /* ChinaWoman.plist in Resources */,
+				CE3A7A021B9FB12600245275 /* ChinaMan.plist in Resources */,
 				CE9A63241B96C59A0071A733 /* lk_click_image@2x.png in Resources */,
 				CE9A63211B96C59A0071A733 /* LICENSE in Resources */,
 				CE9212E41B9E32EA00B578CD /* password_icon@2x.png in Resources */,
@@ -1386,6 +1405,7 @@
 				CE9A61BC1B96C54D0071A733 /* Images.xcassets in Resources */,
 				CE9A63111B96C59A0071A733 /* LICENSE in Resources */,
 				CE04D1A51B97ECE800EAB9E2 /* SearchHeader.xib in Resources */,
+				CE3A7A011B9FB12600245275 /* ChinaGroup.plist in Resources */,
 				CE9A630B1B96C59A0071A733 /* MJRefresh.bundle in Resources */,
 				CE9212E31B9E32EA00B578CD /* password_icon.png in Resources */,
 				CE9212E01B9E32EA00B578CD /* round_textfield@2x.png in Resources */,
@@ -1441,6 +1461,7 @@
 				CE9A63081B96C59A0071A733 /* MJRefreshGifHeader.m in Sources */,
 				CE9A62DA1B96C59A0071A733 /* AFURLSessionManager.m in Sources */,
 				CE9A631E1B96C59A0071A733 /* UIImageView+HighlightedWebCache.m in Sources */,
+				CE3A7A061B9FB3B000245275 /* TArtistViewController.m in Sources */,
 				CE9A63381B96C59A0071A733 /* TPlayButton.m in Sources */,
 				CE04D19A1B973E5600EAB9E2 /* TAccountViewController.m in Sources */,
 				CE9A630F1B96C59A0071A733 /* UIView+MJExtension.m in Sources */,
@@ -1497,7 +1518,6 @@
 				CE7A1D141B9DDB6700C13632 /* UIWindow+YzdHUD.m in Sources */,
 				CE9A633B1B96C59A0071A733 /* TSearchAlbumModel.m in Sources */,
 				CE9A62DD1B96C59A0071A733 /* AFNetworkActivityIndicatorManager.m in Sources */,
-				CEA2FCD91B986CC300D0FF24 /* TYunMusicView.m in Sources */,
 				CE9A632B1B96C59A0071A733 /* STKAudioPlayer.m in Sources */,
 				CE9A632C1B96C59A0071A733 /* STKAutoRecoveringHTTPDataSource.m in Sources */,
 				CE9A62D31B96C59A0071A733 /* AFHTTPRequestOperationManager.m in Sources */,

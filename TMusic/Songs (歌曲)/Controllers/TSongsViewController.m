@@ -35,7 +35,8 @@
 @property (nonatomic, weak) UIView *moreView;
 @property (nonatomic, assign) BOOL  isMoreBtnClick;
 @property (nonatomic, copy) NSString *inputText;
-@property (nonatomic, copy) NSString *songsCOunt;
+@property (nonatomic, copy) NSString *collectCount;
+@property (nonatomic, copy) NSString *downloadCOunt;
 
 @end
 
@@ -66,8 +67,15 @@
     RLMResults *list = [List allObjects];
     NSArray *temp = [NSArray arrayWithObject:list];
     self.songsListArray = [temp firstObject];
+    RLMResults *down = [TDownLoad allObjects];
+    NSArray *temp1 = [NSArray arrayWithObject:down];
+    NSArray *temp2 = [temp1 firstObject];
+    self.downloadCOunt = [NSString stringWithFormat:@"%zd",temp2.count];
     [self.tableView reloadData];
-    
+    RLMResults *co = [Collect allObjects];
+    NSArray *temp3 = [NSArray arrayWithObject:co];
+    NSArray *temp4 = [temp3 firstObject];
+    self.collectCount = [NSString stringWithFormat:@"%zd",temp4.count];
 }
 
 
@@ -130,10 +138,8 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:songsCell];
         if (indexPath.section == 0 && indexPath.row == 0) {
             UILabel *label = [[UILabel alloc]init];
-            RLMResults *down = [TDownLoad allObjects];
-            NSArray *temp = [NSArray arrayWithObject:down];
-            NSArray *temp1 = [temp firstObject];
-            label.text = [NSString stringWithFormat:@"%zd",temp1.count];
+         
+            label.text = self.downloadCOunt;
             label.textColor = [UIColor grayColor];
             label.font = SYS_FONT(13);
             label.frame = CGRectMake(SCREEN_W-40, 0, 40, 50);
@@ -151,10 +157,8 @@
         cell.textLabel.text = @"我喜欢的音乐";
         cell.imageView.image = [UIImage imageNamed:@"blank_playlist"];
         UILabel *label = [[UILabel alloc]init];
-        RLMResults *co = [Collect allObjects];
-        NSArray *temp = [NSArray arrayWithObject:co];
-        NSArray *temp1 = [temp firstObject];
-        label.text = [NSString stringWithFormat:@"%zd",temp1.count];
+      
+        label.text = self.collectCount;
         label.textColor = [UIColor grayColor];
         label.font = SYS_FONT(13);
         label.frame = CGRectMake(SCREEN_W-40, 0, 40, 50);
