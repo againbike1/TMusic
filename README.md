@@ -10,8 +10,6 @@ AVAudioPlayer用来播放沙盒中缓存好的文件 STKAudioPlaying 是用来�
 目前Bug 二级控机制跳转会失败 正在努力解决:
         搜索内容如果匹配不到会闪退. 
   很快会解决的 ~~~~~~~~~~~~~~
-  各位 这个项目 有逻辑上的Bug .....  很快会解决的 ~~~~~~~~~~~~~~
-  
   
    ![image](https://raw.githubusercontent.com/LeslieJia/TMusic/ffaf57e694f2ac75d0c31c7e3a52bdda4f6b8b47/pic/tmusci.png)
 ![image](https://github.com/LeslieJia/TMusic/blob/becb16627c57d609d9ff45e868a527ea1c8cda97/pic/Snip20150908_1.png)
