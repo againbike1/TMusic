@@ -110,7 +110,6 @@ static   TPlayingController *vc = nil;
             }
         }
         if (self.isDownLoadMusic) {
-               [self.downloadPlayer pause];
             [self downLoadSongsWillPlaying];
             NSLog(@"收到了本地播放");
          
@@ -127,7 +126,6 @@ static   TPlayingController *vc = nil;
     [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
       [self.listTableView removeFromSuperview];
     [self resignFirstResponder];
-//    [self.tempToolsButton removeFromSuperview];
 }
 - (void)setUpPlayingView
 {
@@ -285,7 +283,9 @@ static   TPlayingController *vc = nil;
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.downLoadModel = self.songsListArray[indexPath.row];
-    
+    if (self.player.state == STKAudioPlayerStatePlaying) {
+        [self.player stop];
+    }
     [self downLoadSongsWillPlaying];
     [UIView animateWithDuration:1.25 animations:^{
         [self.listTableView removeFromSuperview];
@@ -478,6 +478,8 @@ static   TPlayingController *vc = nil;
 - (void)SongsWillPlaying
 {
     [self.downloadPlayer stop];
+    [self.progressTimer invalidate];
+    [self.albumeRotationTimer invalidate];
     [self.albumImageView sd_setImageWithURL:[NSURL URLWithString:self.songsModel.album.picUrl]];
     NSURL *url                            = [NSURL URLWithString:self.songsModel.audio];
     self.player.delegate = self;
@@ -500,6 +502,8 @@ static   TPlayingController *vc = nil;
 {
    
        [self.player stop];
+    [self.progressTimer invalidate];
+    [self.albumeRotationTimer invalidate];
         self.navigationItem.title = [NSString stringWithFormat:@"%@ - %@",self.downLoadModel.songsName,self.downLoadModel.artistName];
     
        NSString *path = [NSString stringWithFormat:@"%@/%zd/%zd",DOCU_PATH,self.downLoadModel.songsID,self.downLoadModel.songsID];

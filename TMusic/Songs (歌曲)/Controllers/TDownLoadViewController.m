@@ -110,9 +110,11 @@
     TPlayingController *playing = [TPlayingController sharePlayingVc];
 
     TNavMianViewController *nav = [[TNavMianViewController alloc]initWithRootViewController:playing];
-    playing.downLoadModel = self.songsArray[indexPath.row];
     playing.isDownLoadMusic = YES;
-    
+    NSLog(@"%zd",playing.downLoadModel.songsID);
+    TDownLoad *down = self.songsArray[indexPath.row];
+  
+    playing.downLoadModel = down;
     [self presentViewController:nav animated:YES completion:nil];
     
 }

@@ -128,11 +128,14 @@
     TPlayingController *vc                 = [TPlayingController sharePlayingVc];
 
     TNavMianViewController *nav = [[TNavMianViewController alloc]initWithRootViewController:vc];
-    vc.songsModel = songsModel;
     vc.isSearchMusic = YES;
-    if (vc.player.state == STKAudioPlayerStatePlaying) {
-        [vc.player stop];
+    if (songsModel.id == vc.songsModel.id) {
+        vc.isSearchMusic = NO;
     }
+    if ([vc.downloadPlayer isPlaying]) {
+        [vc.downloadPlayer stop];
+    }
+        vc.songsModel = songsModel;
     [self presentViewController:nav animated:YES completion:nil];
    
 }
