@@ -147,7 +147,7 @@
 
 - (void)setUpNavgationBar
 {
-    self.navigationItem.leftBarButtonItem  = [UIBarButtonItem itemWithTitle:@"返回" target:self action:@selector(back)];
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTitle:@"返回" target:self action:@selector(back)];
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTitle:@"下载" target:self action:@selector(go)];
 }
 
@@ -167,17 +167,13 @@
 - (void)downloadFileURL:(NSString *)aUrl savePath:(NSString *)aSavePath fileName:(NSString *)aFileName type:(NSString *)type
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    
-    
     NSString *fileName = [NSString stringWithFormat:@"%@/%@", aSavePath, aFileName];
-    
-    
     if ([fileManager fileExistsAtPath:fileName]) {
         NSLog(@"已经下载");
           [self.downLoadBtn setImage:[UIImage imageNamed:@"btn_download_complete2_play"] forState:UIControlStateNormal];
         [self.tableView reloadData];
-        return;
-    }else{
+            return;
+    } else{
         
         if (![fileManager fileExistsAtPath:aSavePath]) {
             [fileManager createDirectoryAtPath:aSavePath withIntermediateDirectories:YES attributes:nil error:nil];
@@ -186,8 +182,8 @@
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
         
         AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-        operation.inputStream   = [NSInputStream inputStreamWithURL:url];
-        operation.outputStream  = [NSOutputStream outputStreamToFileAtPath:fileName append:NO];
+        operation.inputStream = [NSInputStream inputStreamWithURL:url];
+        operation.outputStream = [NSOutputStream outputStreamToFileAtPath:fileName append:NO];
         
         if (type) {
             [operation setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
@@ -196,8 +192,6 @@
             }];
             [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
                 NSLog(@"下载成功");
-                
-         
                     dispatch_queue_t queue = dispatch_queue_create(NULL, NULL);
                     dispatch_async(queue, ^{
                         TDownLoad *download = [[TDownLoad alloc]init];
@@ -215,9 +209,6 @@
                         [realm commitWriteTransaction];
                              NSLog(@"下载信息写入成功");
                     });
-                
-                 
-                
                 [self.downLoadBtn setImage:[UIImage imageNamed:@"btn_download_complete2_play"] forState:UIControlStateNormal];
             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 
@@ -249,66 +240,10 @@
     if (offsetY >= judgeOffsetY) { // 最后一个cell完全进入视野范围内
         // 显示footer
         self.tableView.tableFooterView.hidden = NO;
-        
+         NSString *temp = [NSString stringWithFormat:@"%zd",self.songsArray.count+1];
         // 加载更多的微博数据
-        [self loadMoreStatus];
+        [self searchMusicWithContent:temp name:self.result type:@"1"];
     }
-}
-
-- (void)loadMoreStatus
-{
-    
-    NSString *temp = [NSString stringWithFormat:@"%zd",self.songsArray.count+1];
-    
-    if (self.result) {
-        NSString *str                      = @"http://s.music.163.com/search/get/";
-        AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
-        NSMutableDictionary *params        = [NSMutableDictionary dictionary];
-        params[@"type"]                    = @"1";
-        params[@"s"]                       = self.result;
-        params[@"limit"]                   = @"20";
-        params[@"offset"]                  = temp;
-        [mgr GET:str parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            
-        NSDictionary *rsultDict   = responseObject[@"result"];
-         
-        if (rsultDict[@"songCount"]) {
-            NSArray *tempSongsArray  = [NSArray arrayWithObject:rsultDict[@"songs"]];
-            NSArray *songArray =[tempSongsArray firstObject];
-            NSMutableArray *tempArray  = [NSMutableArray array];
-            for (int i = 0; i<songArray.count; i++) {
-    
-                NSDictionary *songsDict  = songArray[i];
-                TSearchSongsModel *songsModel =[TSearchSongsModel searchSongsWithDict:songsDict];
-                if (songsModel.artists) {
-                    NSArray *tempArtistsArray  = [NSArray arrayWithObject:songsModel.artists];
-                    NSArray *artistsArray   = [tempArtistsArray firstObject];
-                    for (int j = 0; j<artistsArray.count; j++) {
-                        NSDictionary *dict = artistsArray[j];
-                        songsModel.artists = [TSearchArtistsModel searchArtistsWithDict:dict];
-                    }
-                }
-        
-                if (songsModel.album) {
-                    NSDictionary *albumDict = (NSDictionary *)songsModel.album;
-                    songsModel.album  = [TSearchAlbumModel searchAlbumWithDict:albumDict];
-                    if (songsModel.album.artist) {
-                        NSDictionary *arlistModel = (NSDictionary *)songsModel.album.artist;
-                        songsModel.album.artist = [TSearchArtistsModel searchArtistsWithDict:arlistModel];
-                        [tempArray addObject:songsModel];
-                    }
-                }
-            }
-            [self.songsArray addObjectsFromArray:tempArray];
-            [self.tableView reloadData];
-        }
-
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@" 刷新更多出错 %@",error);
-    }];
-    
-    }
-    
 }
 
 - (void)setupDownRefresh
@@ -318,15 +253,10 @@
     self.tableView.tableFooterView =view;
     self.tableView.tableFooterView.height = 50;
 }
-
-
-
 #pragma mark
 #pragma mark - 4.数据处理/Http
 - (void)searchMusicWithContent :(NSString *)offset name:(NSString *)name type:(NSString *)type
 {
-    
-    
     if (self.result) {
         NSString *str                      = @"http://s.music.163.com/search/get/";
         AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
@@ -337,50 +267,44 @@
         params[@"offset"]                  = offset;
         [mgr GET:str parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
 
-        NSDictionary *ResultDict           = responseObject[@"result"];
+        NSDictionary *ResultDict  = responseObject[@"result"];
             if (!ResultDict) {
                 [self.view.window showHUDWithText:@"无对应选项" Type:ShowDismiss Enabled:YES];
                 return ;
             }
-        NSArray *tempSongsArray            = [NSArray arrayWithObject:ResultDict[@"songs"]];
+        NSArray *tempSongsArray = [NSArray arrayWithObject:ResultDict[@"songs"]];
             NSArray *songArray =[tempSongsArray firstObject];
-        NSMutableArray *tempArray          = [NSMutableArray array];
-        for (int i                         = 0; i<songArray.count; i++) {
-
-        NSDictionary *songsDict            = songArray[i];
-                TSearchSongsModel *songsModel =[TSearchSongsModel searchSongsWithDict:songsDict];
+        NSMutableArray *tempArray  = [NSMutableArray array];
+        for (int i = 0; i<songArray.count; i++) {
+        NSDictionary *songsDict = songArray[i];
+        TSearchSongsModel *songsModel =[TSearchSongsModel searchSongsWithDict:songsDict];
+            
                 if (songsModel.artists) {
-        NSArray *tempArtistsArray          = [NSArray arrayWithObject:songsModel.artists];
-        NSArray *artistsArray              = [tempArtistsArray firstObject];
-        for (int j                         = 0; j<artistsArray.count; j++) {
-        NSDictionary *dict                 = artistsArray[j];
-        songsModel.artists                 = [TSearchArtistsModel searchArtistsWithDict:dict];
+        NSArray *tempArtistsArray  = [NSArray arrayWithObject:songsModel.artists];
+        NSArray *artistsArray  = [tempArtistsArray firstObject];
+        for (int j = 0; j<artistsArray.count; j++) {
+        NSDictionary *dict = artistsArray[j];
+        songsModel.artists = [TSearchArtistsModel searchArtistsWithDict:dict];
                     }
                 }
 
                 if (songsModel.album) {
-
-        NSDictionary *albumDict            = (NSDictionary *)songsModel.album;
-        songsModel.album                   = [TSearchAlbumModel searchAlbumWithDict:albumDict];
+        NSDictionary *albumDict = (NSDictionary *)songsModel.album;
+        songsModel.album = [TSearchAlbumModel searchAlbumWithDict:albumDict];
                     if (songsModel.album.artist) {
-        NSDictionary *arlistModel          = (NSDictionary *)songsModel.album.artist;
-        songsModel.album.artist            = [TSearchArtistsModel searchArtistsWithDict:arlistModel];
+        NSDictionary *arlistModel = (NSDictionary *)songsModel.album.artist;
+        songsModel.album.artist  = [TSearchArtistsModel searchArtistsWithDict:arlistModel];
                         [tempArray addObject:songsModel];
                     }
                 }
-            
-       
-        self.songsArray                    = tempArray;
+                self.songsArray = tempArray;
                 [self.tableView reloadData];
             }
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@" 搜索出错 %@",error);
         }];
-        
     }
-    
-    
 }
 
 

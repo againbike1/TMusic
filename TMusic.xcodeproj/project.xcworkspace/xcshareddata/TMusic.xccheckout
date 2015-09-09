@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>BA82FD10-A455-4782-AE33-DBB1D8E5EC48</string>
 	<key>IDESourceControlProjectName</key>
-	<string>TMusic</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>7EA3C16F2B66ADBBC42D8E72B9360AC1D857129B</key>
 		<string>https://github.com/LeslieJia/TMusic</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>TMusic.xcodeproj</string>
+	<string>TMusic.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>7EA3C16F2B66ADBBC42D8E72B9360AC1D857129B</key>

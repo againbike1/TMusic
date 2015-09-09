@@ -145,15 +145,15 @@
     if (indexPath.section == 0 ) {
         tempArray = self.artistStyles[0];
         if (indexPath.row == 0) {
-            nav.title =tempArray[0];
+            artistVc.title =tempArray[0];
             artistVc.artistArray = self.chinaMan;
         }
         else if (indexPath.row == 1) {
-              nav.title =tempArray[1];
+              artistVc.title =tempArray[1];
             artistVc.artistArray = self.chinaWoman;
         }
         else {
-              nav.title =tempArray[2];
+              artistVc.title =tempArray[2];
             artistVc.artistArray = self.chinaGroup;
         }
     }

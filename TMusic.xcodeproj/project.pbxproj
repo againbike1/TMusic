@@ -17,6 +17,8 @@
 		CE3A7A021B9FB12600245275 /* ChinaMan.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE3A79FF1B9FB12600245275 /* ChinaMan.plist */; };
 		CE3A7A031B9FB12600245275 /* ChinaWoman.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE3A7A001B9FB12600245275 /* ChinaWoman.plist */; };
 		CE3A7A061B9FB3B000245275 /* TArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3A7A051B9FB3B000245275 /* TArtistViewController.m */; };
+		CE5096841BA016B10008E3C2 /* TAccountHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5096831BA016B10008E3C2 /* TAccountHeader.m */; };
+		CE5096861BA016D20008E3C2 /* Account.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5096851BA016D20008E3C2 /* Account.xib */; };
 		CE6116E71B98861D00A0EA55 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE6116E61B98861D00A0EA55 /* CoreLocation.framework */; };
 		CE6116E91B98862700A0EA55 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE6116E81B98862700A0EA55 /* Security.framework */; };
 		CE6116EB1B98862D00A0EA55 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE6116EA1B98862D00A0EA55 /* CoreGraphics.framework */; };
@@ -197,6 +199,9 @@
 		CE3A7A001B9FB12600245275 /* ChinaWoman.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ChinaWoman.plist; sourceTree = "<group>"; };
 		CE3A7A041B9FB3B000245275 /* TArtistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TArtistViewController.h; sourceTree = "<group>"; };
 		CE3A7A051B9FB3B000245275 /* TArtistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TArtistViewController.m; sourceTree = "<group>"; };
+		CE5096821BA016B10008E3C2 /* TAccountHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAccountHeader.h; sourceTree = "<group>"; };
+		CE5096831BA016B10008E3C2 /* TAccountHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAccountHeader.m; sourceTree = "<group>"; };
+		CE5096851BA016D20008E3C2 /* Account.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Account.xib; sourceTree = "<group>"; };
 		CE6116E61B98861D00A0EA55 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		CE6116E81B98862700A0EA55 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		CE6116EA1B98862D00A0EA55 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -511,8 +516,7 @@
 			isa = PBXGroup;
 			children = (
 				CE04D18E1B973E0300EAB9E2 /* Controllers */,
-				CE04D18F1B973E0300EAB9E2 /* Models */,
-				CE04D1901B973E0300EAB9E2 /* Views */,
+				CE5096811BA016B10008E3C2 /* Views */,
 			);
 			path = "Account (账号)";
 			sourceTree = "<group>";
@@ -527,20 +531,6 @@
 				CE9212CB1B9E32BA00B578CD /* ASViewController.xib */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		CE04D18F1B973E0300EAB9E2 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		CE04D1901B973E0300EAB9E2 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		CE04D1911B973E0300EAB9E2 /* Songs (歌曲) */ = {
@@ -590,6 +580,16 @@
 				CE3A7A001B9FB12600245275 /* ChinaWoman.plist */,
 			);
 			path = ArtistPlist;
+			sourceTree = "<group>";
+		};
+		CE5096811BA016B10008E3C2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CE5096821BA016B10008E3C2 /* TAccountHeader.h */,
+				CE5096831BA016B10008E3C2 /* TAccountHeader.m */,
+				CE5096851BA016D20008E3C2 /* Account.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		CE6116FC1B9886A100A0EA55 /* Frameorks */ = {
@@ -1391,6 +1391,7 @@
 				CE9212E11B9E32EA00B578CD /* text_field.png in Resources */,
 				CEA2FCD61B986B0600D0FF24 /* singerStyle.plist in Resources */,
 				CE9A62FC1B96C59A0071A733 /* LICENSE in Resources */,
+				CE5096861BA016D20008E3C2 /* Account.xib in Resources */,
 				CE9212E61B9E32EA00B578CD /* user_name_icon@2x.png in Resources */,
 				CE9A63271B96C59A0071A733 /* lk_noimage@2x.png in Resources */,
 				CE3A7A031B9FB12600245275 /* ChinaWoman.plist in Resources */,
@@ -1526,6 +1527,7 @@
 				CE9A630A1B96C59A0071A733 /* MJRefreshStateHeader.m in Sources */,
 				CE9A63171B96C59A0071A733 /* SDWebImageDownloader.m in Sources */,
 				CE9A631D1B96C59A0071A733 /* UIImage+MultiFormat.m in Sources */,
+				CE5096841BA016B10008E3C2 /* TAccountHeader.m in Sources */,
 				CE9A633C1B96C59A0071A733 /* TSearchArtistsModel.m in Sources */,
 				CE9A632F1B96C59A0071A733 /* STKDataSourceWrapper.m in Sources */,
 				CE9A62F71B96C59A0071A733 /* NSObject+MJCoding.m in Sources */,
