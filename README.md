@@ -2,7 +2,7 @@
 这是一个音乐播放器呀╮(╯▽╰)╭
 
 ### 移植的Smartisan OS音乐播放器 不可用于其他商业用途
- V1.0版本
+##### V1.1 优化了搜索 解除了返回数据长度限制 增加了友盟社会化分享 增加了本地播放Slider调节音量
  这个播放器的播放模块用到了两个类  
 一个是AVAudioPlayer 一个是STKaudioPlaying STKAudioPlaying 是一个第三方类库 对AVPlayer的封装 
  AVAudioPlayer用来播放沙盒中缓存好的文件 STKAudioPlaying 是用来播放网络音乐 
