@@ -47,6 +47,7 @@
 @property (nonatomic, strong) NSMutableArray *songsListArray;
 @property (nonatomic, assign) BOOL isRadomPlay;
 @property (nonatomic,assign) BOOL isLast;
+@property (nonatomic, assign) BOOL isResume;
 @end
 
 @implementation TPlayingController
@@ -282,11 +283,20 @@ static   TPlayingController *vc = nil;
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    self.downLoadModel = self.songsListArray[indexPath.row];
+
     if (self.player.state == STKAudioPlayerStatePlaying) {
         [self.player stop];
     }
-    [self downLoadSongsWillPlaying];
+    TDownLoad *down = self.songsListArray[indexPath.row];
+    if (down.songsID == self.downLoadModel.songsID) {
+        self.isResume = YES;
+    }
+    else{
+        self.isResume = NO;
+    }
+        self.downLoadModel = self.songsListArray[indexPath.row];
+   [self downLoadSongsWillPlaying];
+    self.isListBtnClick = NO;
     [UIView animateWithDuration:1.25 animations:^{
         [self.listTableView removeFromSuperview];
     }];
@@ -500,7 +510,9 @@ static   TPlayingController *vc = nil;
 
 - (void)downLoadSongsWillPlaying
 {
-   
+    if (self.isResume) {
+        return;
+    }
        [self.player stop];
     [self.progressTimer invalidate];
     [self.albumeRotationTimer invalidate];
