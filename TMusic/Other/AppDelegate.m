@@ -12,7 +12,7 @@
 #import <BmobSDK/Bmob.h>
 #import "TPlayingController.h"
 #import "TNavMianViewController.h"
-
+#import "UMSocial.h"
 
 @interface AppDelegate ()
 @property (nonatomic, strong) UIButton *playingBox;
@@ -28,11 +28,10 @@
     self.window.rootViewController = [[TMainViewController alloc]init];
        [self.window makeKeyAndVisible];
     [Bmob registerWithAppKey:@"906d3b928eb493d1581893926802baf3"];
+    [UMSocialData setAppKey:@"55eff73367e58eaa74002328"];
      [self setUpPlayingBox];
     [self setStatusBarStyle:application];
     [self setNavigationBarStyle];
-   
- 
     return YES;
    
 }

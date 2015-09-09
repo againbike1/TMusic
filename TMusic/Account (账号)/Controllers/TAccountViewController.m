@@ -15,8 +15,9 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "UIWindow+YzdHUD.h"
 #import "TAccountHeader.h"
+#import "UMSocial.h"
 #define ORIGINAL_MAX_WIDTH 640.0f
-@interface TAccountViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate, VPImageCropperDelegate>
+@interface TAccountViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate,UMSocialUIDelegate>
 @property (nonatomic, strong) UIImageView *portraitImageView;
 @property (nonatomic, strong) NSMutableArray *settings;
 @property (nonatomic, weak) UILabel *name;;
@@ -168,8 +169,21 @@
             }
         }];
     }
+    if (indexPath.section == 2 && indexPath.row == 0) {
+        [UMSocialSnsService presentSnsIconSheetView:self
+                                             appKey:@"55eff73367e58eaa74002328"
+                                          shareText:@"TMusic,一个开源的移植Smartisan OS音乐播放器 代码请戳:https://github.com/LeslieJia/TMusic"
+                                         shareImage:[UIImage imageNamed:@"good"]
+                                    shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToWechatSession,UMShareToWechatTimeline,UMShareToRenren,UMShareToQzone,UMShareToQQ,UMShareToDouban,UMShareToTwitter,UMShareToFacebook,nil]
+                                           delegate:self];
+    }
 }
 
+
+-(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
+{
+    [self.view.window showHUDWithText:@"分享成功" Type:ShowPhotoYes Enabled:YES];
+}
 #pragma mark 自定义代理
 
 #pragma mark 自定义通知

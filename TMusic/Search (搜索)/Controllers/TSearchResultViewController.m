@@ -41,6 +41,7 @@
         [self setUpNavgationBar];
     [self searchMusicWithContent:@"0" name:self.result type:self.type];
     [self setupDownRefresh];
+    self.tableView.separatorInset = UIEdgeInsetsMake(0, 50, 0, 0);
    
 }
 
@@ -76,6 +77,13 @@
         button.tag = indexPath.row;
         cell.tag = indexPath.row;
         [cell.contentView addSubview:button];
+        UILabel *label = [[UILabel alloc]init];
+        label.text = [NSString stringWithFormat:@"%zd",indexPath.row+1];
+        label.textColor =[UIColor grayColor];
+        label.font = SYS_FONT(17);
+        label.frame = CGRectMake(0, 0, 50, 50);
+        label.textAlignment = NSTextAlignmentCenter;
+        [cell.contentView addSubview:label];
     }
     TSearchSongsModel *songsModel          = self.songsArray[indexPath.row];
     TSearchAlbumModel *albumModel = songsModel.album;
@@ -263,7 +271,7 @@
         NSMutableDictionary *params        = [NSMutableDictionary dictionary];
         params[@"type"]                    = type;
         params[@"s"]                       = name;
-        params[@"limit"]                   = @"20";
+        params[@"limit"]                   = @"30";
         params[@"offset"]                  = offset;
         [mgr GET:str parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
 
@@ -287,7 +295,6 @@
         songsModel.artists = [TSearchArtistsModel searchArtistsWithDict:dict];
                     }
                 }
-
                 if (songsModel.album) {
         NSDictionary *albumDict = (NSDictionary *)songsModel.album;
         songsModel.album = [TSearchAlbumModel searchAlbumWithDict:albumDict];
@@ -297,10 +304,10 @@
                         [tempArray addObject:songsModel];
                     }
                 }
-                self.songsArray = tempArray;
-                [self.tableView reloadData];
             }
-            
+            self.tableView.tableFooterView.hidden = YES;
+            [self.songsArray addObjectsFromArray:tempArray];
+            [self.tableView reloadData];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@" 搜索出错 %@",error);
         }];

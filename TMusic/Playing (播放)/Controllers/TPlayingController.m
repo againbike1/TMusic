@@ -15,11 +15,12 @@
 #import "TDownLoadViewController.h"
 #import "UIWindow+YzdHUD.h"
 #import <Social/Social.h>
-
+#import "UMSocial.h"
+#import <MediaPlayer/MediaPlayer.h>
 @implementation Collect
 
 @end
-@interface TPlayingController ()<STKAudioPlayerDelegate,AVAudioPlayerDelegate,UITableViewDelegate,UITableViewDataSource>
+@interface TPlayingController ()<STKAudioPlayerDelegate,AVAudioPlayerDelegate,UITableViewDelegate,UITableViewDataSource,UMSocialUIDelegate>
 @property (nonatomic, weak) TPlayingView           *playingView;
 
 @property (nonatomic, weak) UIButton *stopButton;
@@ -374,33 +375,31 @@ static   TPlayingController *vc = nil;
 }
 - (void)shareBtnClick
 {
-    // 首先判断新浪分享是否可用
-    if (![SLComposeViewController isAvailableForServiceType:SLServiceTypeSinaWeibo]) {
-       [self.visualView1.window showHUDWithText:@"请登录微博" Type:ShowDismiss Enabled:YES];
-        
-        return;
+    if ([self.downloadPlayer isPlaying]) {
+        NSString *name = self.downLoadModel.songsName;
+        NSString *content = [NSString stringWithFormat:@"我推荐了%@这首歌,你也来听听吧%@",name,self.downLoadModel.songsAudio];
+        [UMSocialSnsService presentSnsIconSheetView:self
+                                             appKey:@"55eff73367e58eaa74002328"
+                                          shareText:content
+                                         shareImage:[UIImage imageNamed:@"good"]
+                                    shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToWechatSession,UMShareToWechatTimeline,UMShareToRenren,UMShareToQzone,UMShareToQQ,UMShareToDouban,UMShareToTwitter,UMShareToFacebook,nil]
+                                           delegate:self];
     }
-    // 创建控制器，并设置ServiceType
-    SLComposeViewController *composeVC = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeSinaWeibo];
-    NSString *name = [NSString stringWithFormat:@"%@-%@真好听 ------ 测试",self.downLoadModel.artistName,self.downLoadModel.songsName];
-    // 添加要分享的文字
-    [composeVC setInitialText:name];
-    // 添加要分享的url
-    [composeVC addURL:[NSURL URLWithString:@"http://jiakeqi.cn"]];
-    // 弹出分享控制器
-    [self presentViewController:composeVC animated:YES completion:nil];
-    // 监听用户点击事件
-    composeVC.completionHandler = ^(SLComposeViewControllerResult result){
-        if (result == SLComposeViewControllerResultDone) {
-            NSLog(@"点击了发送");
-        }
-        else if (result == SLComposeViewControllerResultCancelled)
-        {
-            NSLog(@"点击了取消");
-        }
-    };
+    else
+    {
+           [self.view.window showHUDWithText:@"你还没播放呢!" Type:ShowDismiss Enabled:YES];
+    }
 }
 
+-(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
+{
+    [self.view.window showHUDWithText:@"分享成功" Type:ShowPhotoYes Enabled:YES];
+    [UIView animateWithDuration:0.25 animations:^{
+        [self.visualView1  removeFromSuperview];
+        [self.visualView2  removeFromSuperview];
+        self.isToolsBtnClick = YES;
+    }];
+}
 - (void)timerBtnClick
 {
     NSLog(@"2");
@@ -544,6 +543,7 @@ static   TPlayingController *vc = nil;
     self.progressTimer = [NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(track2) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop]addTimer:self.progressTimer forMode:NSRunLoopCommonModes];
     [self.playSlider addTarget:self action:@selector(changeProgress:) forControlEvents:UIControlEventTouchUpInside];
+    [self.playingView.volumeSlider addTarget:self action:@selector(changeVolume:) forControlEvents:UIControlEventTouchUpInside];;
  
 }
 
@@ -554,14 +554,20 @@ static   TPlayingController *vc = nil;
 #pragma mark
 #pragma mark __代理
 
--(void)audioPlayer:(STKAudioPlayer *)audioPlayer didStartPlayingQueueItemId:(NSObject *)queueItemId
+- (void)changeVolume :(UISlider *)slider
 {
-    
- 
+    if ([self.downloadPlayer isPlaying]) {
+        [self.downloadPlayer setVolume:slider.value*7];
+    }
+    else {
+        self.player.volume =  slider.value*100;
+    }
 }
 
-
-
+-(void)audioPlayer:(STKAudioPlayer *)audioPlayer didStartPlayingQueueItemId:(NSObject *)queueItemId
+{
+ 
+}
 /**
  *  专辑封面旋转
  */
