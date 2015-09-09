@@ -1,7 +1,7 @@
 # TMusic
 这是一个音乐播放器呀╮(╯▽╰)╭
 
-### 移植的Smartisan OS音乐播放器 
+### 移植的Smartisan OS音乐播放器 不可用于其他商业用途
  V1.0版本
  这个播放器的播放模块用到了两个类  
 一个是AVAudioPlayer 一个是STKaudioPlaying STKAudioPlaying 是一个第三方类库 对AVPlayer的封装 
