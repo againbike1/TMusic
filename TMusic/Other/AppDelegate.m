@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "TMainViewController.h"
-
 #import <BmobSDK/Bmob.h>
 #import "TPlayingController.h"
 #import "TNavMianViewController.h"

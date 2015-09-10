@@ -14,7 +14,6 @@
 #import "TDownLoad.h"
 #import "TDownLoadViewController.h"
 #import "UIWindow+YzdHUD.h"
-#import <Social/Social.h>
 #import "UMSocial.h"
 #import <MediaPlayer/MediaPlayer.h>
 @implementation Collect
@@ -591,8 +590,8 @@ static   TPlayingController *vc = nil;
         NSInteger durMin = (NSInteger)self.player.duration/60;
         NSInteger durSec = (NSInteger)self.player.duration%60;
         
-        self.beginTime.text = [NSString stringWithFormat:@"%02ld:%02ld",proMin,proSec];
-        self.endTime.text = [NSString stringWithFormat:@"%02ld:%02ld",durMin,durSec];
+        self.beginTime.text = [NSString stringWithFormat:@"%02zd:%02zd",proMin,proSec];
+        self.endTime.text = [NSString stringWithFormat:@"%02zd:%02zd",durMin,durSec];
         self.player.volume = self.volumeSlider.value;
     }
 
@@ -609,8 +608,8 @@ static   TPlayingController *vc = nil;
         NSInteger durMin = (NSInteger)self.downloadPlayer.duration/60;
         NSInteger durSec = (NSInteger)self.downloadPlayer.duration%60;
         
-        self.beginTime.text = [NSString stringWithFormat:@"%02ld:%02ld",proMin,proSec];
-        self.endTime.text = [NSString stringWithFormat:@"%02ld:%02ld",durMin,durSec];
+        self.beginTime.text = [NSString stringWithFormat:@"%02zd:%02zd",proMin,proSec];
+        self.endTime.text = [NSString stringWithFormat:@"%02zd:%02zd",durMin,durSec];
         self.player.volume = self.volumeSlider.value;
     }
    

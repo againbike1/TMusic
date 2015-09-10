@@ -125,7 +125,7 @@
         return nil;
     }
     TSongsListHeader *headerView = [[TSongsListHeader alloc]init];
-    headerView.label.text = [NSString stringWithFormat:@"  我收藏的歌单(%lu)",self.songsListArray.count];
+    headerView.label.text = [NSString stringWithFormat:@"  我收藏的歌单(%lu)",(unsigned long)self.songsListArray.count];
     headerView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ablum_crosstexture_bg"]];
     return headerView;
 }

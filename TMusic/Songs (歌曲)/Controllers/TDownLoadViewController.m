@@ -80,7 +80,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-     NSString *downCell = [NSString stringWithFormat:@"%lu%lu",indexPath.section,indexPath.row];
+     NSString *downCell = [NSString stringWithFormat:@"%zd%zd",indexPath.section,indexPath.row];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:downCell];
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:downCell];

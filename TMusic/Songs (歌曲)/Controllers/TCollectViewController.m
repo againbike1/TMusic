@@ -109,7 +109,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-     NSString *collectCell = [NSString stringWithFormat:@"%lu",indexPath.row];
+     NSString *collectCell = [NSString stringWithFormat:@"%lu",(long)indexPath.row];
     UITableViewCell *cell = [ tableView dequeueReusableCellWithIdentifier:collectCell];
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:collectCell];

@@ -65,7 +65,7 @@
 
 -(UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    NSString *searchCell = [NSString stringWithFormat:@"%lu",indexPath.row];
+    NSString *searchCell = [NSString stringWithFormat:@"%zd",indexPath.row];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:searchCell];
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:searchCell];
@@ -137,11 +137,12 @@
 
     TNavMianViewController *nav = [[TNavMianViewController alloc]initWithRootViewController:vc];
     vc.isSearchMusic = YES;
-    if (songsModel.id == vc.songsModel.id) {
+    if (songsModel.id == vc.songsModel.id || [vc.downloadPlayer isPlaying]) {
         vc.isSearchMusic = NO;
     }
     if ([vc.downloadPlayer isPlaying]) {
         [vc.downloadPlayer stop];
+        vc.isSearchMusic = YES;
     }
         vc.songsModel = songsModel;
     [self presentViewController:nav animated:YES completion:nil];

@@ -2768,7 +2768,7 @@ OSStatus AudioConverterCallback(AudioConverterRef inAudioConverter, UInt32* ioNu
 
                     if (writeError)
                     {
-                        NSLog(@"STKAudioPlayer:handleRecordingOfAudioPackets failed on AudioFileWritePackets with error \"" OSSTATUS_PRINTF_PLACEHOLDER "\"", OSSTATUS_PRINTF_VALUE(writeError));
+//                        NSLog(@"STKAudioPlayer:handleRecordingOfAudioPackets failed on AudioFileWritePackets with error \"" OSSTATUS_PRINTF_PLACEHOLDER "\"", OSSTATUS_PRINTF_VALUE(writeError));
                     }
                     else
                     {
