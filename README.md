@@ -8,9 +8,7 @@
  AVAudioPlayer用来播放沙盒中缓存好的文件 STKAudioPlaying 是用来播放网络音乐 
  注:有的模块功能没有实现 比如首页歌手类别搜索 因为我找不到好用的API啊摔!!!!!
  目前实现的模块有下载 播放 在线播放 暂时只支持歌曲收藏
-目前Bug 二级控机制跳转会失败 正在努力解决:
-        搜索内容如果匹配不到会闪退. 
-  很快会解决的 ~~~~~~~~~~~~~~
+
   
    ![image](https://raw.githubusercontent.com/LeslieJia/TMusic/ffaf57e694f2ac75d0c31c7e3a52bdda4f6b8b47/pic/tmusci.png)
 ![image](https://github.com/LeslieJia/TMusic/blob/becb16627c57d609d9ff45e868a527ea1c8cda97/pic/Snip20150908_1.png)
