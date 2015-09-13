@@ -201,7 +201,7 @@
     }
     [topVC.view addSubview:self.backImageView];
     self.transform = CGAffineTransformMakeRotation(-M_1_PI / 2);
-    CGRect afterFrame = CGRectMake((CGRectGetWidth(topVC.view.bounds) - kAlertWidth) * 0.5, (CGRectGetHeight(topVC.view.bounds) - kAlertHeight) * 0.5, kAlertWidth, kAlertHeight);
+    CGRect afterFrame = CGRectMake((CGRectGetWidth(topVC.view.bounds) - kAlertWidth) * 0.5, (CGRectGetHeight(topVC.view.bounds) - kAlertHeight) * 0.5-50, kAlertWidth, kAlertHeight);
     [UIView animateWithDuration:0.35f delay:0.1 options:UIViewAnimationOptionCurveEaseIn animations:^{
         self.transform = CGAffineTransformMakeRotation(0);
         self.frame = afterFrame;

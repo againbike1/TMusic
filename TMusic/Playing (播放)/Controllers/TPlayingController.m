@@ -16,6 +16,7 @@
 #import "UIWindow+YzdHUD.h"
 #import "UMSocial.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import "MBProgressHUD+T.h"
 @implementation Collect
 
 @end
@@ -381,7 +382,7 @@ static   TPlayingController *vc = nil;
                                              appKey:@"55eff73367e58eaa74002328"
                                           shareText:content
                                          shareImage:[UIImage imageNamed:@"good"]
-                                    shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToWechatSession,UMShareToWechatTimeline,UMShareToRenren,UMShareToQzone,UMShareToQQ,UMShareToDouban,UMShareToTwitter,UMShareToFacebook,nil]
+                                    shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToWechatSession,UMShareToWechatTimeline,UMShareToRenren,UMShareToQQ,UMShareToDouban,UMShareToTwitter,UMShareToFacebook,nil]
                                            delegate:self];
     }
     else
@@ -392,7 +393,10 @@ static   TPlayingController *vc = nil;
 
 -(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
 {
-    [self.view.window showHUDWithText:@"分享成功" Type:ShowPhotoYes Enabled:YES];
+        if(response.responseCode == UMSResponseCodeSuccess)
+        {
+            [MBProgressHUD showSuccess:@"分享成功"];
+        }
     [UIView animateWithDuration:0.25 animations:^{
         [self.visualView1  removeFromSuperview];
         [self.visualView2  removeFromSuperview];
@@ -408,7 +412,7 @@ static   TPlayingController *vc = nil;
 - (void)addlistBtnClick
 {
     if (self.downLoadModel.songsID) {
-      
+        [MBProgressHUD showSuccess:@"收藏成功"];
         dispatch_queue_t queque = dispatch_queue_create(NULL, NULL);
         dispatch_sync(queque, ^{
             Collect *collect = [[Collect alloc]init];
@@ -419,14 +423,16 @@ static   TPlayingController *vc = nil;
             [realm commitWriteTransaction];
             NSLog(@"歌曲收藏写入成功");
         });
-        [self.visualView1.window showHUDWithText:@"收藏成功" Type:ShowPhotoYes Enabled:YES];
         [UIView animateWithDuration:0.25 animations:^{
             [self.visualView1  removeFromSuperview];
               [self.visualView2  removeFromSuperview];
-            self.isToolsBtnClick = YES;
+           
         }];
     }
+     self.isToolsBtnClick = NO;
+    [self.toolsButton  setImage:[UIImage imageNamed:@"btn_unbrella_icon0"] forState:UIControlStateNormal];
 }
+
 #pragma mark 请求歌词
 #warning 暂未找到好用的歌词API 因歌词涉及版权 未加入该模块
 - (void)lyricsBtnClick
@@ -506,10 +512,7 @@ static   TPlayingController *vc = nil;
 
 - (void)downLoadSongsWillPlaying
 {
-    if (self.isResume) {
-        return;
-    }
-       [self.player stop];
+
     [self.progressTimer invalidate];
     [self.albumeRotationTimer invalidate];
         self.navigationItem.title = [NSString stringWithFormat:@"%@ - %@",self.downLoadModel.songsName,self.downLoadModel.artistName];
@@ -522,7 +525,17 @@ static   TPlayingController *vc = nil;
     [session setCategory:AVAudioSessionCategoryPlayback error:nil];
     [session setActive:YES error:nil];
     NSURL *audioUrl = [NSURL fileURLWithPath:songsPath];
- 
+    self.albumeRotationTimer = [NSTimer timerWithTimeInterval:0.01 target:self selector:@selector(albumViewRotation) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop]addTimer:self.albumeRotationTimer forMode:NSRunLoopCommonModes];
+    self.progressTimer = [NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(track2) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop]addTimer:self.progressTimer forMode:NSRunLoopCommonModes];
+    [self.playSlider addTarget:self action:@selector(changeProgress:) forControlEvents:UIControlEventTouchUpInside];
+    [self.playingView.volumeSlider addTarget:self action:@selector(changeVolume:) forControlEvents:UIControlEventTouchUpInside];;
+    [self.player stop];
+    if (self.isResume) {
+        [self.downloadPlayer play];
+        return;
+    }
     self.downloadPlayer = [[AVAudioPlayer alloc]initWithContentsOfURL:audioUrl error:nil];
     self.downloadPlayer.delegate = self;
     if (self.downloadPlayer == NULL)
@@ -537,12 +550,7 @@ static   TPlayingController *vc = nil;
     [self.stopButton setImage:[UIImage imageNamed:@"btn_playing_pause"] forState:UIControlStateNormal];
     NSLog(@"开始播放");
        [self.playingView.leftPlayModeButton setImage:[UIImage imageNamed:@"btn_playing_cycle_on"] forState:UIControlStateNormal];
-    self.albumeRotationTimer = [NSTimer timerWithTimeInterval:0.01 target:self selector:@selector(albumViewRotation) userInfo:nil repeats:YES];
-    [[NSRunLoop currentRunLoop]addTimer:self.albumeRotationTimer forMode:NSRunLoopCommonModes];
-    self.progressTimer = [NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(track2) userInfo:nil repeats:YES];
-    [[NSRunLoop currentRunLoop]addTimer:self.progressTimer forMode:NSRunLoopCommonModes];
-    [self.playSlider addTarget:self action:@selector(changeProgress:) forControlEvents:UIControlEventTouchUpInside];
-    [self.playingView.volumeSlider addTarget:self action:@selector(changeVolume:) forControlEvents:UIControlEventTouchUpInside];;
+
  
 }
 

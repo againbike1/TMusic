@@ -104,9 +104,9 @@ static ASViewController *vc = nil;
     NSString *email = self.emailTextField.text;
     if (self.segment.selectedSegmentIndex) {
         BmobUser *bUser = [[BmobUser alloc] init];
-        [bUser setUserName:username];
-        [bUser setPassword:password];
-        [bUser setEmail:email];
+        bUser.username = username;
+        bUser.password = password;
+        bUser.email = email;
         [bUser signUpInBackgroundWithBlock:^ (BOOL isSuccessful, NSError *error){
             if (isSuccessful){
                 [self.view.window showHUDWithText:@"注册成功" Type:ShowPhotoYes Enabled:YES];
@@ -131,7 +131,6 @@ static ASViewController *vc = nil;
                 [user setObject:username forKey:@"username"];
                 [user setObject:password forKey:@"password"];
                 [user synchronize];
-
                 [self dismissViewControllerAnimated:YES completion:nil];
             }
         }];

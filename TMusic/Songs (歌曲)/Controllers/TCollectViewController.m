@@ -52,6 +52,7 @@
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTitle:@"返回" target:self action:@selector(back)];
     self.title = @"我喜欢的音乐";
     self.tableView.separatorInset = UIEdgeInsetsMake(0, 50, 0, 0);
+        self.tableView.tableFooterView = [[UIView alloc]init];
 }
 
 - (void)back

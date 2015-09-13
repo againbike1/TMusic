@@ -88,7 +88,6 @@
         [button  setImage:[UIImage imageNamed:@"btn_download_complete2_play"] forState:UIControlStateNormal];
         button.frame = CGRectMake(SCREEN_W-55, 0, 50, 50);
         [cell.contentView addSubview:button];
-        
         UILabel *label = [[UILabel alloc]init];
         label.text = [NSString stringWithFormat:@"%zd",indexPath.row+1];
         label.textColor =[UIColor grayColor];

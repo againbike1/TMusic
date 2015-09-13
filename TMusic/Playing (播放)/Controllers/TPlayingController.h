@@ -19,7 +19,6 @@
 @end
 @interface TPlayingController : UIViewController
 
-@property(nonatomic,retain)NSMutableArray *playArray;
 @property (nonatomic, strong) TDownLoad *downLoadModel;
 @property(nonatomic,assign)BOOL isDownLoadMusic;
 @property(nonatomic,strong)STKAudioPlayer *player;

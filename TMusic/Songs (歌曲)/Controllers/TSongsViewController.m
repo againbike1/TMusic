@@ -61,6 +61,7 @@
   self.tableView.allowsMultipleSelectionDuringEditing = YES;
     self.tableView.tableFooterView = [[UIView alloc]init];
 }
+
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -77,7 +78,6 @@
     self.collectCount = [NSString stringWithFormat:@"%zd",temp4.count];
     [self.tableView reloadData];
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

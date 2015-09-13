@@ -14,4 +14,5 @@
 @property (nonatomic, copy) NSString *type;
 - (void)searchMusicWithContent :(NSString *)offset name:(NSString *)name type:(NSString *)type;
 @property (nonatomic, strong) UIButton* downLoadBtn;
+@property (nonatomic, assign) BOOL isArtistSearch;
 @end

@@ -23,6 +23,7 @@
     [super viewDidLoad];
     [ self setUpNavgationBar];
         self.tableView.separatorInset = UIEdgeInsetsMake(0, 50, 0, 0);
+    self.tableView.tableFooterView = [[UIView alloc]init];
 }
 
 
@@ -80,6 +81,7 @@
     TNavMianViewController *nav = [[TNavMianViewController alloc]initWithRootViewController:search];
     search.result = name;
     search.type = @"1";
+    search.isArtistSearch = YES;
     [self presentViewController:nav animated:YES completion:nil];
 }
 

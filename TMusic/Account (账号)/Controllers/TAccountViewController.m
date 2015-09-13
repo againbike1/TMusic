@@ -16,6 +16,8 @@
 #import "UIWindow+YzdHUD.h"
 #import "TAccountHeader.h"
 #import "UMSocial.h"
+#import "MBProgressHUD.h"
+#import "MBProgressHUD+T.h"
 #define ORIGINAL_MAX_WIDTH 640.0f
 @interface TAccountViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate,UMSocialUIDelegate>
 @property (nonatomic, strong) UIImageView *portraitImageView;
@@ -152,8 +154,8 @@
         NSString *name = [user objectForKey:@"username"];
         NSString *pass = [user objectForKey:@"password"];
         BmobUser *bUser = [[BmobUser alloc] init];
-        [bUser setUserName:name];
-        [bUser setPassword:pass];
+        bUser.username = name;
+        bUser.password = pass;
         [bUser signUpInBackgroundWithBlock:^ (BOOL isSuccessful, NSError *error){
             if (isSuccessful){
                 NSLog(@"Sign up successfully");
@@ -174,15 +176,17 @@
                                              appKey:@"55eff73367e58eaa74002328"
                                           shareText:@"TMusic,一个开源的移植Smartisan OS音乐播放器 代码请戳:https://github.com/LeslieJia/TMusic"
                                          shareImage:[UIImage imageNamed:@"good"]
-                                    shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToWechatSession,UMShareToWechatTimeline,UMShareToRenren,UMShareToQzone,UMShareToQQ,UMShareToDouban,UMShareToTwitter,UMShareToFacebook,nil]
+                                    shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToWechatSession,UMShareToWechatTimeline,UMShareToRenren,UMShareToQQ,UMShareToDouban,UMShareToTwitter,UMShareToFacebook,nil]
                                            delegate:self];
     }
 }
 
-
 -(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
 {
-    [self.view.window showHUDWithText:@"分享成功" Type:ShowPhotoYes Enabled:YES];
+    if(response.responseCode == UMSResponseCodeSuccess)
+    {
+        [MBProgressHUD showSuccess:@"分享成功"];
+    }
 }
 #pragma mark 自定义代理
 
