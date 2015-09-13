@@ -23,8 +23,8 @@
 @property (nonatomic, strong) NSMutableArray *songsArray;
 @property (nonatomic, strong) TSearchSongsModel *model;
 @property (nonatomic, strong) UIProgressView *progressView;
-@property (nonatomic, assign) NSInteger clickIndex;
 @property (nonatomic, strong) UIRefreshControl *refresh;
+@property (nonatomic, strong) UITableViewCell *tempCell;
 @end
 
 @implementation TSearchResultViewController
@@ -77,13 +77,13 @@
         button.frame = CGRectMake(SCREEN_W-55, 0, 50, 50);
         button.tag = indexPath.row;
         cell.tag = indexPath.row;
-        self.progressView = [[UIProgressView alloc]init];
-        self.progressView.frame = CGRectMake(50, 47, SCREEN_W-50, 5);
-        self.progressView.progressViewStyle = UIProgressViewStyleDefault;
-        self.progressView.progressTintColor = [UIColor lightGrayColor];
-        self.progressView.trackTintColor = [UIColor whiteColor];
-        self.progressView.tag = indexPath.row;
-        [cell.contentView addSubview:self.progressView];
+        UIProgressView *progressView = [[UIProgressView alloc]init];
+        progressView.frame = CGRectMake(50, 47, SCREEN_W-50, 5);
+        progressView.progressViewStyle = UIProgressViewStyleDefault;
+        progressView.progressTintColor = [UIColor lightGrayColor];
+        progressView.trackTintColor = [UIColor whiteColor];
+        progressView.tag = indexPath.row;
+        [cell.contentView addSubview:progressView];
         [cell.contentView addSubview:button];
         UILabel *label = [[UILabel alloc]init];
         label.text = [NSString stringWithFormat:@"%zd",indexPath.row+1];
@@ -115,7 +115,9 @@
     {
         if(cell.tag == button.tag)
         {
-            self.clickIndex = button.tag;
+            self.tempCell = cell;
+         self.progressView = [cell.contentView.subviews firstObject];
+           self.progressView.hidden = NO;
             TSearchSongsModel *model = self.songsArray[button.tag];
             NSString *songID = [NSString stringWithFormat:@"%zd",model.id];
             NSString *audioPath = [DOCU_PATH stringByAppendingPathComponent:songID];
@@ -126,6 +128,7 @@
             [self downloadFileURL:model.album.picUrl savePath:albumPath fileName:albumName type:nil];
              self.downLoadBtn = button;
             self.model = model;
+            
         
         }
     }
@@ -193,15 +196,11 @@
         operation.inputStream = [NSInputStream inputStreamWithURL:url];
         operation.outputStream = [NSOutputStream outputStreamToFileAtPath:fileName append:NO];
         if (type) {
-         
-           __block float progress;
-            UITableViewCell *cell = self.tableView.visibleCells[self.clickIndex];
-            UIProgressView *progressView = (UIProgressView *)[cell.contentView.subviews firstObject];
-            progressView.hidden = NO;
             [operation setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
-                 progress = (float)totalBytesRead/totalBytesExpectedToRead;
-                [progressView setProgress:progress animated:YES];
+                 CGFloat progress = (float)totalBytesRead/totalBytesExpectedToRead;
+                [self.progressView setProgress:progress animated:YES];
                 NSLog(@"下载进度%02f", (float)totalBytesRead/totalBytesExpectedToRead);
+
             }];
             [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
                 NSLog(@"下载成功");
@@ -324,22 +323,6 @@
             self.tableView.tableFooterView.hidden = YES;
             [self.refresh endRefreshing];
             [self.songsArray addObjectsFromArray:tempArray];
-             [self.tableView reloadData];
-            RLMResults *down = [TDownLoad allObjects];
-            NSArray *temp1 = [NSArray arrayWithObject:down];
-            NSArray *temp2 = [temp1 firstObject];
-            for (int i = 0; i < self.songsArray.count; i++) {
-                TSearchSongsModel *songsModel = self.songsArray[i];
-                for (int j = 0; j < temp2.count; j++) {
-                    TDownLoad *downModel = temp2[j];
-                    if (downModel.songsID == songsModel.id) {
-                        UITableViewCell *cell = self.tableView.visibleCells[i];
-                        UIButton *button = cell.contentView.subviews[1];
-                        [button setImage:[UIImage imageNamed:@"btn_download_complete2_play"] forState:UIControlStateNormal];
-                        break;
-                    }
-                }
-            }
             [self.tableView reloadData];
             [MBProgressHUD hideHUD];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
