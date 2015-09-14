@@ -12,7 +12,7 @@
 #import "TPlayingController.h"
 #import "TNavMianViewController.h"
 #import "UMSocial.h"
-
+#import <FIR/FIR.h>
 @interface AppDelegate ()
 @property (nonatomic, strong) UIButton *playingBox;
 @property (nonatomic, strong) TPlayingController *playingVc;
@@ -28,6 +28,7 @@
        [self.window makeKeyAndVisible];
     [Bmob registerWithAppKey:@"906d3b928eb493d1581893926802baf3"];
     [UMSocialData setAppKey:@"55eff73367e58eaa74002328"];
+    [FIR handleCrashWithKey:@"4c72f7ac4e535452753c16d6b7ab55fd"]; 
      [self setUpPlayingBox];
     [self setStatusBarStyle:application];
     [self setNavigationBarStyle];

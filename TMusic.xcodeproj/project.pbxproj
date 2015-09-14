@@ -13,6 +13,7 @@
 		CE04D1A01B973FBA00EAB9E2 /* TNavMianViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE04D19F1B973FBA00EAB9E2 /* TNavMianViewController.m */; };
 		CE04D1A31B97EC4100EAB9E2 /* TSearchHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = CE04D1A21B97EC4100EAB9E2 /* TSearchHeader.m */; };
 		CE04D1A51B97ECE800EAB9E2 /* SearchHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE04D1A41B97ECE800EAB9E2 /* SearchHeader.xib */; };
+		CE1A73FD1BA69C3C0049E337 /* FIR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE1A73FC1BA69C3C0049E337 /* FIR.framework */; };
 		CE3A7A011B9FB12600245275 /* ChinaGroup.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE3A79FE1B9FB12600245275 /* ChinaGroup.plist */; };
 		CE3A7A021B9FB12600245275 /* ChinaMan.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE3A79FF1B9FB12600245275 /* ChinaMan.plist */; };
 		CE3A7A031B9FB12600245275 /* ChinaWoman.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE3A7A001B9FB12600245275 /* ChinaWoman.plist */; };
@@ -184,6 +185,7 @@
 		CE04D1A11B97EC4100EAB9E2 /* TSearchHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSearchHeader.h; sourceTree = "<group>"; };
 		CE04D1A21B97EC4100EAB9E2 /* TSearchHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSearchHeader.m; sourceTree = "<group>"; };
 		CE04D1A41B97ECE800EAB9E2 /* SearchHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchHeader.xib; sourceTree = "<group>"; };
+		CE1A73FC1BA69C3C0049E337 /* FIR.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FIR.framework; sourceTree = SOURCE_ROOT; };
 		CE3A79FE1B9FB12600245275 /* ChinaGroup.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ChinaGroup.plist; sourceTree = "<group>"; };
 		CE3A79FF1B9FB12600245275 /* ChinaMan.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ChinaMan.plist; sourceTree = "<group>"; };
 		CE3A7A001B9FB12600245275 /* ChinaWoman.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ChinaWoman.plist; sourceTree = "<group>"; };
@@ -460,6 +462,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE6116F31B98864800A0EA55 /* SystemConfiguration.framework in Frameworks */,
 				CE9212EE1B9E36A700B578CD /* libicucore.dylib in Frameworks */,
 				CE9212E91B9E335200B578CD /* MobileCoreServices.framework in Frameworks */,
 				CE9212C01B9E2E0900B578CD /* libc++.dylib in Frameworks */,
@@ -469,9 +472,9 @@
 				CE6116F91B98866600A0EA55 /* AVFoundation.framework in Frameworks */,
 				CE8693691B9CA86300459DB3 /* Realm.framework in Frameworks */,
 				CE6116F51B98865100A0EA55 /* libz.1.2.5.dylib in Frameworks */,
-				CE6116F31B98864800A0EA55 /* SystemConfiguration.framework in Frameworks */,
 				CE6116F11B98864200A0EA55 /* CoreTelephony.framework in Frameworks */,
 				CE6116EF1B98863B00A0EA55 /* CFNetwork.framework in Frameworks */,
+				CE1A73FD1BA69C3C0049E337 /* FIR.framework in Frameworks */,
 				CE6116EB1B98862D00A0EA55 /* CoreGraphics.framework in Frameworks */,
 				CE6116E91B98862700A0EA55 /* Security.framework in Frameworks */,
 				CE6116E71B98861D00A0EA55 /* CoreLocation.framework in Frameworks */,
@@ -577,6 +580,7 @@
 				CEA5DA391BA044AF002B8295 /* UMSocial_Sdk_4.2.3 */,
 				CE9212EC1B9E365800B578CD /* BmobSDK.framework */,
 				CE9212BD1B9E2C8F00B578CD /* Social.framework */,
+				CE1A73FC1BA69C3C0049E337 /* FIR.framework */,
 				CE8693631B9CA73500459DB3 /* libc++.dylib */,
 				CE6116F81B98866600A0EA55 /* AVFoundation.framework */,
 				CE6116F61B98865A00A0EA55 /* libicucore.dylib */,
