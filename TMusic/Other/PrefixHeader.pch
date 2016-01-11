@@ -9,11 +9,9 @@
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
 
-#import "AFNetworking.h"
 #import "MJExtension.h"
 #import "UIView+Extension.h"
 #import "UIImageView+WebCache.h"
-#import "TPlayButton.h"
 #import "STKAudioPlayer.h"
 #import "UIBarButtonItem+Extension.h"
 #define SYS_FONT(x) [UIFont systemFontOfSize:x]
