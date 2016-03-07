@@ -1,23 +1,22 @@
 PODS:
-  - Masonry (0.6.4)
-  - Realm (0.97.0):
-    - Realm/Headers (= 0.97.0)
-  - Realm/Headers (0.97.0)
-  - SDWebImage (3.7.4):
-    - SDWebImage/Core (= 3.7.4)
-  - SDWebImage/Core (3.7.4)
-  - StreamingKit (0.1.29)
+  - Alamofire (2.0.2)
+  - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
-  - Masonry
-  - Realm
-  - SDWebImage
-  - StreamingKit
+  - Alamofire (~> 2.0)
+  - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
+
+EXTERNAL SOURCES:
+  SwiftyJSON:
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
+
+CHECKOUT OPTIONS:
+  SwiftyJSON:
+    :commit: 42bdb102d2624b143c07850ebdc1537d5b6579b6
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
 SPEC CHECKSUMS:
-  Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
-  Realm: b498a6fb9d288b171ff98d0e2d4384c295be8990
-  SDWebImage: 247edd7dd80dd6124197b0d6a17846fe9d1df968
-  StreamingKit: c329785aaef3ac142d4ae388345bfe1ed23cfd45
+  Alamofire: 8edbab00802a752bb5240cc2abe70e7e881488ad
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
 COCOAPODS: 0.39.0

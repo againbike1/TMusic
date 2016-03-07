@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CE9A61AA1B96C54C0071A733"
+               BlueprintIdentifier = "1846CB041C8C5B4C001037F4"
                BuildableName = "TMusic.app"
                BlueprintName = "TMusic"
                ReferencedContainer = "container:TMusic.xcodeproj">
@@ -32,9 +32,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CE9A61C31B96C54D0071A733"
-               BuildableName = "TMusicTests.xctest"
-               BlueprintName = "TMusicTests"
+               BlueprintIdentifier = "1846CB181C8C5B4C001037F4"
+               BuildableName = "TMusicUITests.xctest"
+               BlueprintName = "TMusicUITests"
                ReferencedContainer = "container:TMusic.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -42,7 +42,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CE9A61AA1B96C54C0071A733"
+            BlueprintIdentifier = "1846CB041C8C5B4C001037F4"
             BuildableName = "TMusic.app"
             BlueprintName = "TMusic"
             ReferencedContainer = "container:TMusic.xcodeproj">
@@ -65,7 +65,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CE9A61AA1B96C54C0071A733"
+            BlueprintIdentifier = "1846CB041C8C5B4C001037F4"
             BuildableName = "TMusic.app"
             BlueprintName = "TMusic"
             ReferencedContainer = "container:TMusic.xcodeproj">
@@ -84,7 +84,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CE9A61AA1B96C54C0071A733"
+            BlueprintIdentifier = "1846CB041C8C5B4C001037F4"
             BuildableName = "TMusic.app"
             BlueprintName = "TMusic"
             ReferencedContainer = "container:TMusic.xcodeproj">
